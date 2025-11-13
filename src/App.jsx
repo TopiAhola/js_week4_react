@@ -1,6 +1,7 @@
 import './App.css';
 import Greeting from "./components/Greetings.jsx";
 import Footer from "./components/Footer.jsx";
+import Pizzamenu from "./components/Pizzamenu.jsx";
 
 //funktio joka palauttaa JSX (javascriptxml)
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
                 <li>2. jutu</li>
             </ul>
             <Greeting></Greeting>
+            <Pizzamenu menuId='menu1'></Pizzamenu>
             <Footer/>
         </>
 
