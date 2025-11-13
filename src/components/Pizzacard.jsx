@@ -1,11 +1,12 @@
-const pizza1pic = './src/assets/pizza1.png'
 
+const pizza1pic = './src/assets/pizza1.png'
 
 const Pizzacard = (props)=>{
     console.log('props in pizzacard:')
     console.log(props);
     const menuId = props.menuId;
     const {id, name, price} = props.pizza;
+    const changePizzaCount = props.changePizzaCount;
     return (
         <>
             <div>
@@ -13,20 +14,15 @@ const Pizzacard = (props)=>{
             {price}€ <br/>
             </div>
 
-            <p>{count} in cart</p>
-            <button onClick={ () =>  }>
+            <button onClick={ () => changePizzaCount(id,1) }>
                 ++
             </button>
 
-            <button onClick={ () =>  }>
+            <button onClick={ () => changePizzaCount(id,-1) }>
                 --
             </button>
-
-
-
         </>
 
     )
 }
-
 export default Pizzacard
