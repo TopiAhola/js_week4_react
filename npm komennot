@@ -1,0 +1,3 @@
+
+ npm create vite@latest js_week4_react
+npm install --save-dev --save-exact prettier
