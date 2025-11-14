@@ -1,34 +1,53 @@
-import './App.css';
-import Greeting from "./components/Greetings.jsx";
-import Footer from "./components/Footer.jsx";
-import Pizzamenu from "./components/Pizzamenu.jsx";
-import CounterButton from "./components/CounterButton.jsx";
-import {useState} from "react";
+import {BrowserRouter, Routes, Route, Link} from 'react-router';
+import {useNavigate} from 'react-router';
+import Single from "./views/Single.jsx";
+import Layout from "./components/Layout.jsx";
 
 
 
-//funktio joka palauttaa JSX (javascriptxml)
+import Home from './components/Home';
 const App = () => {
-
-    const name = 'Topi';
-    const age = 69;
-    const isTeacher = true;
     return (
         <>
             <h1>My App</h1>
-            <Greeting name={name} age={age} isTeacher={isTeacher} />
-            <ul>
-                <li>1. jutu</li>
-                <li>2. jutu</li>
-            </ul>
-            <Greeting></Greeting>
+            <Home />
 
-            <Pizzamenu menuId='menu1'></Pizzamenu>
-            <Footer/>
-            <CounterButton/>
         </>
-
     );
-}
+};
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route element={<Layout />}>
+                    <Route path="/" element={<Home />} />
+                    {/!* TODO: add missing routes *!/}
+                    <Route path="/single" element={<Single />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
+};
+
+// Very simple view components
+const Home = () => <h2>Home Page</h2>;
+const About = () => <h2>About Page</h2>;
+const Users = () => <h2>Users Page</h2>;
 
 export default App;
+*/
+
