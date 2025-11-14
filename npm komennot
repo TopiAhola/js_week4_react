@@ -9,3 +9,8 @@ proptypes:
 
 ???:
     npm install react-router
+
+
+css:
+ npm install picolib
+npm install @picocss/pico
