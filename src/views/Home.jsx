@@ -1,5 +1,5 @@
-import MediaRow from "./MediaRow";
-import SingleView from "./SingleView";
+import MediaRow from "../components/MediaRow.jsx";
+import SingleView from "../components/SingleView.jsx";
 import { useState } from "react";
 
 
@@ -20,6 +20,7 @@ const Home = () => {
             <th>Created</th>
             <th>Size</th>
             <th>Type</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

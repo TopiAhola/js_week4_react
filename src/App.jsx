@@ -1,10 +1,9 @@
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
-import {useNavigate} from 'react-router';
 import Single from "./views/Single.jsx";
 import Layout from "./components/Layout.jsx";
 
 
-import Home from './components/Home';
+import Home from './views/Home.jsx';
 
 
 const App = () => {

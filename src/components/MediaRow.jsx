@@ -1,4 +1,4 @@
-import Home from "./Home.jsx";
+import Home from "../views/Home.jsx";
 import SingleView from "./SingleView";
 
 
