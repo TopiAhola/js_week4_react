@@ -1,21 +1,28 @@
+import MediaRow from "./MediaRow";
+
 const Home = () => {
     return (
         <>
             <h2>My Media</h2>
             <table>
-                {mediaArray.map(
-                    //iteroi mediat
-                    (media) => {
-                        return (
-                            <tr id={media.id}>
-                                {//iteroi median kentät
-                                    [...Object.keys(media)].map((key) => {
-                                        return (<td id={key}>{key}:{media[key]}</td>);
-                                    })}
-                            </tr>
-                        );
-                    }
-                )}
+                <thead>
+                <tr>
+                    <th>Thumbnail</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th>Size</th>
+                    <th>Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                {/*mappaa mediat*/}
+                {
+                  mediaArray.map((media) => {
+                    return (<MediaRow item={media} />)
+                  })
+                }
+                </tbody>
             </table>
         </>
     );
