@@ -1,6 +1,8 @@
 import MediaRow from "../components/MediaRow.jsx";
 import SingleView from "../components/SingleView.jsx";
+
 import { useState } from "react";
+import {BrowserRouter, Routes, Route, Link} from 'react-router';
 
 
 const Home = () => {

@@ -16,6 +16,7 @@ const MediaRow = (props) => {
         <td>{item.filesize}</td>
         <td>{item.media_type}</td>
         <td>
+            <Link to="/single" state={selectedItem} >Show</Link>
         <button onClick={(event)=> {
           setSelectedItem(item);
           console.log(event); }}> Show

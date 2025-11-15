@@ -7,10 +7,10 @@ proptypes:
     npm install prop-types
 
 
-???:
+routing:
     npm install react-router
 
 
 css:
- npm install picolib
-npm install @picocss/pico
+    npm install picolib
+    npm install @picocss/pico
