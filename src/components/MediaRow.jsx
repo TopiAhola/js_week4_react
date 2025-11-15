@@ -1,6 +1,6 @@
 import Home from "../views/Home.jsx";
 import SingleView from "./SingleView";
-
+import {Link} from "react-router";
 
 const MediaRow = (props) => {
   const { item, selectedItem, setSelectedItem } = props;
@@ -16,11 +16,8 @@ const MediaRow = (props) => {
         <td>{item.filesize}</td>
         <td>{item.media_type}</td>
         <td>
-            <Link to="/single" state={selectedItem} >Show</Link>
-        <button onClick={(event)=> {
-          setSelectedItem(item);
-          console.log(event); }}> Show
-        </button>
+            <Link to="/single" state={item}>show</Link>
+
         </td>
       </tr>
 
@@ -28,3 +25,17 @@ const MediaRow = (props) => {
 };
 
 export default MediaRow;
+
+
+/*
+ <button onClick={(event)=> {
+          setSelectedItem(item);
+          console.log(event); }}> Show
+        </button>
+
+onClick={(event)=> {
+          setSelectedItem(item);
+          console.log(event); }}
+
+
+ */

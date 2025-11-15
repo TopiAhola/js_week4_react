@@ -1,10 +1,12 @@
-import {Link, useNavigate, useLocation} from 'react-router';
+import {useNavigate, useLocation} from 'react-router';
 
 
-const Single = ()=>{
+const Single = (props)=>{
    const navigate = useNavigate();
-    const {state} = useLocation();
-    const selectedItem = state.item;
+    const selectedItem = useLocation().state;
+    //const selectedItem = props.item;  //proppi korvattu osoitteen statella
+    console.log('item in Single:');
+    console.log(selectedItem);
 
     function VideoOrImage (selectedItem) {
         if (selectedItem.media_type === 'video/mp4') {
@@ -24,7 +26,7 @@ const Single = ()=>{
 
     return (
         selectedItem && (
-            <dialog open={selectedItem}>
+            <div>
                 <div>
                     {VideoOrImage(selectedItem)}
                     <p>{selectedItem.title}</p>
@@ -34,7 +36,7 @@ const Single = ()=>{
                     <p>{selectedItem.media_type}</p>
                     <button onClick={() => navigate(-1)}>Go back</button>
                 </div>
-            </dialog>
+            </div>
         )
     );
 

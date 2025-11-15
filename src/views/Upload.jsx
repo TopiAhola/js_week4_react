@@ -1,4 +1,3 @@
-import react from "@vitejs/plugin-react-swc";
 import {useNavigate} from 'react-router';
 
 const Upload = ()=>{

@@ -16,6 +16,13 @@ css:
     npm install @picocss/pico
 
 
+
+
+
+
+////////////////////////////////////////////////////
+TURHAAAA:
+
 bugein korjaus:
      npm install @swc/wasm
      npm install swc
@@ -37,3 +44,12 @@ bugein korjaus:
 
 Lisää:
 npm install vite-plugin-node-polyfills --save-dev
+
+
+uusi yritys:
+
+npm create react-router@latest ???
+
+tämä:
+
+npm install react-router@6.30.2

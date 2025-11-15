@@ -8,34 +8,6 @@ export default defineConfig({
     react()
   ],
 
-  base: '/',
-
-
+  base: '/~topiaho/Web-sovelluskehitys/wsk_routing/',
 
 });
-
-  /*
-    ssr: {
-    external: [
-      '@swc/core',
-      '@swc/core-win32-x64-msvc',
-      '/@vitejs/plugin-react-swc'
-    ]
- },
-
-  optimizeDeps: {
-    include: [],
-
-    exclude: [
-      '@swc/core',
-      '@swc/core-win32-x64-msvc',
-      '/@vitejs/plugin-react-swc'
-    ],
-  },
-
-  build: {
-    target: 'modules',
-  }
-
-
-   */

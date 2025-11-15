@@ -29,6 +29,7 @@ const SingleView = (props) => {
           <p>{new Date(selectedItem.created_at).toLocaleString("fi-FI")}</p>
           <p>{selectedItem.filesize}</p>
           <p>{selectedItem.media_type}</p>
+
           <button onClick={(event)=> {
             console.log(event);
             setSelectedItem(null);

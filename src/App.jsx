@@ -16,10 +16,10 @@ const App = () => {
 
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
+            <Route path="" element={<Home />} />
             <Route path="/profile" element={<Profile />}/>
             <Route path="/upload" element={<Upload />} />
-            {/*<Route path="/single" element={<Single/>} />*/}
+            <Route path="/single" element={<Single />} />
           </Route>
         </Routes>
       </BrowserRouter>
