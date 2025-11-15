@@ -10,7 +10,12 @@ export default defineConfig({
 
   base: '/',
 
-  ssr: {
+
+
+});
+
+  /*
+    ssr: {
     external: [
       '@swc/core',
       '@swc/core-win32-x64-msvc',
@@ -33,4 +38,4 @@ export default defineConfig({
   }
 
 
-})
+   */
