@@ -2,9 +2,10 @@ import {Link, useNavigate, useLocation} from 'react-router';
 
 
 const Single = ()=>{
-    const navigate = useNavigate();
+   const navigate = useNavigate();
+   /*
     const {state} = useLocation();
-    const item = state.item;
+    const item = state.item;*/
 
 
     return (

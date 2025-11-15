@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route, Link} from 'react-router';
+import {BrowserRouter, Routes, Route} from 'react-router';
 
 import Single from "./views/Single.jsx";
 import Layout from "./components/Layout.jsx";
