@@ -1,13 +1,30 @@
 import MediaRow from "../components/MediaRow.jsx";
 import SingleView from "../components/SingleView.jsx";
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
+import {fetchData} from "../fetchData.js";
 
 
 const Home = () => {
   //state
   const [selectedItem, setSelectedItem] = useState(null);
+  const [mediaArray, setMediaArray] = useState([]);
+  const getMedia = async () => {
+      const json = await fetchData('../public/test.json');
+      setMediaArray(json);
+
+  }
+  useEffect(() => {
+      try {
+          getMedia();
+          console.log(mediaArray);
+      } catch (error) {
+          console.log(error);
+      }
+
+  }, [])
+
 
   return (
     <>
@@ -38,6 +55,9 @@ const Home = () => {
 
 export default Home;
 
+
+/*
+//removed mediaArray
 const mediaArray = [
   {
     media_id: 8,
@@ -74,3 +94,4 @@ const mediaArray = [
     created_at: "2024-01-07T20:48:13.000Z",
   },
 ];
+*/
