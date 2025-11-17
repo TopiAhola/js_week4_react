@@ -30,6 +30,7 @@ const Single = (props)=>{
                 <div>
                     {VideoOrImage(selectedItem)}
                     <p>{selectedItem.title}</p>
+                    <p>{selectedItem.username}</p>
                     <p>{selectedItem.description}</p>
                     <p>{new Date(selectedItem.created_at).toLocaleString("fi-FI")}</p>
                     <p>{selectedItem.filesize}</p>

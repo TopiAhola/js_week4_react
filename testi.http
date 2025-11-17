@@ -1,0 +1,41 @@
+### login ??
+POST https://media2.edu.metropolia.fi/auth-api/api/v1
+
+{
+    "username": "test_user",
+    "password": "12345"
+}
+
+### login2
+
+POST https://media2.edu.metropolia.fi/media-api/api/v1/auth/login
+
+{
+    "username": "test_user",
+    "password": "12345"
+}
+
+### create user
+
+POST https://media2.edu.metropolia.fi/auth-api/api/v1/users
+
+
+
+
+
+
+
+### get media
+GET https://media2.edu.metropolia.fi/media-api/api/v1/media
+
+
+### get users
+GET https://media2.edu.metropolia.fi/media-api/api/v1/users
+
+### get users 2
+GET https://media2.edu.metropolia.fi/auth-api/api/v1/users/302
+
+
+### get user info
+GET https://media2.edu.metropolia.fi/media-api/api/v1/users
+

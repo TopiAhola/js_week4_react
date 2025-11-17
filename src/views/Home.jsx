@@ -6,24 +6,72 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router';
 import {fetchData} from "../fetchData.js";
 
 
+
 const Home = () => {
   //state
   const [selectedItem, setSelectedItem] = useState(null);
   const [mediaArray, setMediaArray] = useState([]);
+
+
   const getMedia = async () => {
-      const json = await fetchData('../public/test.json');
-      setMediaArray(json);
+      const json = await fetchData(import.meta.env.VITE_MEDIA_API + "/media");
 
+    //GET https://media2.edu.metropolia.fi/auth-api/api/v1/users/:id
+    const newArray = await Promise.all(
+      json.map(async (item) => {
+        const result = await fetchData(
+          'https://media2.edu.metropolia.fi/auth-api/api/v1/users/'+item.user_id
+          //import.meta.env.VITE_MEDIA_API +'/users/' + item.id
+        );
+        console.log(result);
+        return { ...item, username: result.username };
+      })
+    )
+
+      setMediaArray(newArray);
   }
-  useEffect(() => {
-      try {
-          getMedia();
-          console.log(mediaArray);
-      } catch (error) {
-          console.log(error);
-      }
 
-  }, [])
+  //Tätä ei käytetä...
+  const addUserData = async () => {
+    console.log('addUserData');
+
+    //GET https://media2.edu.metropolia.fi/auth-api/api/v1/users/:id
+    const newArray = await Promise.all(
+      mediaArray.map(async (item) => {
+        const result = await fetchData(
+          'https://media2.edu.metropolia.fi/auth-api/api/v1/users/'+item.user_id
+          //import.meta.env.VITE_MEDIA_API +'/users/' + item.id
+        );
+        console.log(result);
+        return { ...item, username: result.username };
+      })
+    )
+
+    setMediaArray(newArray);
+
+
+  };
+
+  useEffect(() => {
+    try {
+      getMedia().then(addUserData());
+      //addUserData();
+      console.log(mediaArray);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+/*  useEffect(() => {
+    try {
+      addUserData();
+      console.log(mediaArray);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }, [mediaArray]);*/
 
 
   return (
@@ -35,6 +83,7 @@ const Home = () => {
           <tr>
             <th>Thumbnail</th>
             <th>Title</th>
+            <th>User</th>
             <th>Description</th>
             <th>Created</th>
             <th>Size</th>
