@@ -18,6 +18,10 @@ const Layout = () => {
           <li>
             <Link to="/upload">Upload</Link>
           </li>
+
+          <li>
+            <Link to="/forms">Forms</Link>
+          </li>
         </ul>
       </nav>
 

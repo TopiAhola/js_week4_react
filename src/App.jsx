@@ -1,10 +1,11 @@
-import {BrowserRouter, Routes, Route} from 'react-router';
+import { BrowserRouter, Routes, Route, Form } from "react-router";
 
 import Single from "./views/Single.jsx";
 import Layout from "./components/Layout.jsx";
 import Home from './views/Home.jsx';
 import Upload from "./views/Upload.jsx";
 import Profile from "./views/Profile.jsx";
+import Forms from "./components/Forms.jsx";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />}/>
             <Route path="/upload" element={<Upload />} />
             <Route path="/single" element={<Single />} />
+            <Route path="/forms" element={<Forms />} />
           </Route>
         </Routes>
       </BrowserRouter>
