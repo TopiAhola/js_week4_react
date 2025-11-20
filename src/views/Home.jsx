@@ -54,7 +54,7 @@ const Home = () => {
 
   useEffect(() => {
     try {
-      getMedia().then(addUserData());
+      getMedia(); //.then(addUserData());
       //addUserData();
       console.log(mediaArray);
 
