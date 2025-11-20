@@ -1,10 +1,9 @@
 import MediaRow from "../components/MediaRow.jsx";
 import SingleView from "../components/SingleView.jsx";
+import getMedia from '../utils/getMedia.js'
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
-import {fetchData} from "../fetchData.js";
-
 
 
 const Home = () => {
@@ -12,66 +11,20 @@ const Home = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [mediaArray, setMediaArray] = useState([]);
 
-
-  const getMedia = async () => {
-      const json = await fetchData(import.meta.env.VITE_MEDIA_API + "/media");
-
-    //GET https://media2.edu.metropolia.fi/auth-api/api/v1/users/:id
-    const newArray = await Promise.all(
-      json.map(async (item) => {
-        const result = await fetchData(
-          'https://media2.edu.metropolia.fi/auth-api/api/v1/users/'+item.user_id
-          //import.meta.env.VITE_MEDIA_API +'/users/' + item.id
-        );
-        console.log(result);
-        return { ...item, username: result.username };
-      })
-    )
-
-      setMediaArray(newArray);
-  }
-
-  //Tätä ei käytetä...
-  const addUserData = async () => {
-    console.log('addUserData');
-
-    //GET https://media2.edu.metropolia.fi/auth-api/api/v1/users/:id
-    const newArray = await Promise.all(
-      mediaArray.map(async (item) => {
-        const result = await fetchData(
-          'https://media2.edu.metropolia.fi/auth-api/api/v1/users/'+item.user_id
-          //import.meta.env.VITE_MEDIA_API +'/users/' + item.id
-        );
-        console.log(result);
-        return { ...item, username: result.username };
-      })
-    )
-
-    setMediaArray(newArray);
-
-
-  };
-
+  //use effect
   useEffect(() => {
     try {
-      getMedia(); //.then(addUserData());
-      //addUserData();
+      getMedia().then(
+        (array)=>{setMediaArray(array);},
+        (error)=>{console.log(error)}
+      );
+
       console.log(mediaArray);
 
     } catch (error) {
       console.log(error);
     }
   }, []);
-
-/*  useEffect(() => {
-    try {
-      addUserData();
-      console.log(mediaArray);
-
-    } catch (error) {
-      console.log(error);
-    }
-  }, [mediaArray]);*/
 
 
   return (
