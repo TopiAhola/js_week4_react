@@ -1,6 +1,6 @@
 import MediaRow from "../components/MediaRow.jsx";
 import SingleView from "../components/SingleView.jsx";
-import getMedia from '../utils/getMedia.js'
+import useMedia from "../hooks/apiHooks.js";
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
@@ -9,23 +9,9 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router';
 const Home = () => {
   //state
   const [selectedItem, setSelectedItem] = useState(null);
-  const [mediaArray, setMediaArray] = useState([]);
 
-  //use effect
-  useEffect(() => {
-    try {
-      getMedia().then(
-        (array)=>{setMediaArray(array);},
-        (error)=>{console.log(error)}
-      );
 
-      console.log(mediaArray);
-
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
+const { mediaArray } = useMedia();
 
   return (
     <>
