@@ -1,37 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import useForm from '../hooks/formHooks.js'
+import { useAuthentication } from "../hooks/apiHooks.js";
 
 // LoginForm.jsx
 const LoginForm = () => {
+
+  const {postLogin} = useAuthentication();
 
   const initValues = {
     username: '',
     password: '',
   };
 
-  const [inputs, setInputs] = useState(initValues);
-
-  const handleSubmit = (event) => {
-    if (event) {
-      event.preventDefault();
-    }
-
-    //callback();
-  };
-
-  const handleInputChange = (event) => {
-    event.persist();
-    console.log(event.target.name, event.target.value);
-    setInputs((inputs) => ({
-      ...inputs,
-      [event.target.name]: event.target.value,
-    }));
+  //callback funktio useFormille
+  const doLogin = async (inputData) => {
+    console.log(inputData);
+    const loginResult = await postLogin(inputData);
+    console.log(loginResult);
   }
+
+  const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, initValues);
+
+
 
   return (
     <>
       <h1>Login</h1>
-      <form onSubmit={ () => {} }>
+      <form onSubmit={ handleSubmit }>
         <div>
           <label htmlFor="loginuser">Username</label>
           <input
@@ -52,7 +47,7 @@ const LoginForm = () => {
             autoComplete="current-password"
           />
         </div>
-        <button type="submit" onSubmit={handleSubmit}>Login</button>
+        <button type="submit" >Login</button>
       </form>
     </>
   );

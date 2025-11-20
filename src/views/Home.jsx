@@ -1,6 +1,6 @@
 import MediaRow from "../components/MediaRow.jsx";
 import SingleView from "../components/SingleView.jsx";
-import useMedia from "../hooks/apiHooks.js";
+import { useMedia } from "../hooks/apiHooks.js";
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
