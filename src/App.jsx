@@ -6,6 +6,8 @@ import Home from './views/Home.jsx';
 import Upload from "./views/Upload.jsx";
 import Profile from "./views/Profile.jsx";
 import Forms from "./components/Forms.jsx";
+import Logout from "./views/Logout.jsx";
+import Login from "./views/Login.jsx";
 
 
 const App = () => {
@@ -22,6 +24,8 @@ const App = () => {
             <Route path="/upload" element={<Upload />} />
             <Route path="/single" element={<Single />} />
             <Route path="/forms" element={<Forms />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
           </Route>
         </Routes>
       </BrowserRouter>
