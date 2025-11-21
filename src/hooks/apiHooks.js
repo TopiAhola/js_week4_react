@@ -106,7 +106,7 @@ const useFile = () => {
   };
 
   const postMedia = async (file, inputs, token) => {
-    const mediaApi = 'https://media2.edu.metropolia.fi/media-api/api/v1'
+    const mediaApi = 'https://media2.edu.metropolia.fi/media-api/api/v1/media'
     const options = {
       method: "POST",
       headers: {
