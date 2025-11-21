@@ -99,13 +99,15 @@ const useFile = () => {
     console.log("postFile:" + uploadApi + " " + options);
     console.log(options);
     const uploadResponse = await fetch(uploadApi, options);
-    console.log(uploadResponse);
+    const responseBody = await uploadResponse.json()
+    console.log(responseBody);
+    console.log(responseBody.message);
 
     // return the file data.
-    return uploadResponse.data;
+    return responseBody.data;
   };
 
-  const postMedia = async (file, inputs, token) => {
+  const postMedia = async (file, inputs, token, postFileResponse) => {
     const mediaApi = 'https://media2.edu.metropolia.fi/media-api/api/v1/media'
     const options = {
       method: "POST",
@@ -114,9 +116,9 @@ const useFile = () => {
         Authorization: "Bearer "+token.replaceAll('"','')
       },
       body: JSON.stringify({...inputs,
-        filename: file.name,
-        media_type: file.type,
-        filesize: file.size,
+        filename: postFileResponse.filename,
+        media_type: postFileResponse.media_type,
+        filesize: postFileResponse.filesize,
 
       }) //puretaan milemmat objektit
     };

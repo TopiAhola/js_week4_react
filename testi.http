@@ -47,3 +47,6 @@ PUT https://media2.edu.metropolia.fi/auth-api/api/v1/users
 Authorization: Bearer
 Content-Type: application/json
 
+### delete image
+DELETE https://media2.edu.metropolia.fi/media-api/api/v1/upload/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1NzQsImxldmVsX25hbWUiOiJVc2VyIiwiaWF0IjoxNzYzNzUwNTE1fQ.TnuUu-DV-vDk0-2RgOCvWi1moPovL5YDlVet04shZ-I"

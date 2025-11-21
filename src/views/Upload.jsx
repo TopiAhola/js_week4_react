@@ -34,7 +34,7 @@ const Upload = ()=>{
       console.log(postFileResponse);
 
       // TODO: call postMedia function (see below)
-      const postMediaResponse = await postMedia(file, inputs, token);
+      const postMediaResponse = await postMedia(file, inputs, token, postFileResponse);
       console.log(postMediaResponse);
 
       //redirect to Home
