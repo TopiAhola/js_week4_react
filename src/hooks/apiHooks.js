@@ -90,8 +90,8 @@ const useFile = () => {
     const options = {
       method: "POST",
       headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: "Bearer " +token,
+        /*ContentType: "multipart/form-data",*/
+        Authorization: "Bearer ".concat(token)
       },
       body: formData,
     };
@@ -111,7 +111,7 @@ const useFile = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " +token,
+        Authorization: "Bearer ".concat(token)
       },
       body: JSON.stringify(...inputs, ...file) //puretaan milemmat objektit
     };
