@@ -1,8 +1,8 @@
 // UserContext.jsx
 import { createContext, useState } from 'react';
 import { useAuthentication, useUser } from '../hooks/apiHooks';
-import { useNavigate } from 'react-router';
-import { fetchData } from "../utils/fetchData.js";
+import { useLocation, useNavigate } from 'react-router';
+
 
 const UserContext = createContext(null);
 
@@ -11,7 +11,7 @@ const UserProvider = ({ children }) => {
   const { postLogin } = useAuthentication();
   const { getUserByToken } = useUser();
   const navigate = useNavigate();
-
+  const location = useLocation();
 
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials) => {
@@ -70,8 +70,10 @@ const UserProvider = ({ children }) => {
       } else {
         console.log('No token');
       }
-      //navigate to home
-      navigate("/");
+
+      //navigate to
+      console.log('Naviage to: '+location.pathname);
+      navigate(location.pathname);
 
     } catch (e) {
       console.log(e.message);
