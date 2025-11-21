@@ -10,6 +10,7 @@ import Logout from "./views/Logout.jsx";
 import Login from "./views/Login.jsx";
 
 import { UserProvider } from './contexts/UserContext.jsx';
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 const App = () => {
     return (
@@ -19,8 +20,18 @@ const App = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path="" element={<Home />} />
-            <Route path="/profile" element={<Profile />}/>
-            <Route path="/upload" element={<Upload />} />
+
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Profile/>
+              </ProtectedRoute>}
+            />
+            <Route path="/upload" element={
+              <ProtectedRoute>
+                <Upload/>
+              </ProtectedRoute>}
+            />
+
             <Route path="/single" element={<Single />} />
             <Route path="/forms" element={<Forms />} />
             <Route path="/login" element={<Login />} />
@@ -33,38 +44,3 @@ const App = () => {
     );
 };
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-const App = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" element={<Home />} />
-                    {/!* TODO: add missing routes *!/}
-                    <Route path="/single" element={<Single />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    );
-};
-
-// Very simple view components
-const Home = () => <h2>Home Page</h2>;
-const About = () => <h2>About Page</h2>;
-const Users = () => <h2>Users Page</h2>;
-
-export default App;
-*/
-
