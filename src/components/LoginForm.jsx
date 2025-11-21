@@ -1,11 +1,14 @@
 import React from "react";
 import useForm from '../hooks/formHooks.js'
 import { useAuthentication } from "../hooks/apiHooks.js";
+import { useUserContext } from "../hooks/contextHooks.js";
 
 // LoginForm.jsx
 const LoginForm = () => {
 
   const {postLogin} = useAuthentication();
+  //korvataan tällä:
+  const { handleLogin } = useUserContext();
 
   const initValues = {
     username: '',
@@ -15,7 +18,7 @@ const LoginForm = () => {
   //callback funktio useFormille
   const doLogin = async (inputData) => {
     console.log(inputData);
-    const loginResult = await postLogin(inputData);
+    const loginResult = await handleLogin(inputData);  //tarvitaanko paluuarvoa jos state saadaan contextin kautta?
     console.log(loginResult);
     const token = loginResult.token;
 

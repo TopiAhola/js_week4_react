@@ -9,13 +9,12 @@ import Forms from "./components/Forms.jsx";
 import Logout from "./views/Logout.jsx";
 import Login from "./views/Login.jsx";
 
+import { UserProvider } from './contexts/UserContext.jsx';
 
 const App = () => {
     return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-
-
-
+      <UserProvider>
 
         <Routes>
           <Route element={<Layout />}>
@@ -28,6 +27,8 @@ const App = () => {
             <Route path="/logout" element={<Logout />} />
           </Route>
         </Routes>
+
+      </UserProvider>
       </BrowserRouter>
     );
 };
