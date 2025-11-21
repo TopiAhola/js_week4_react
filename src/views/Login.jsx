@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginForm from "../components/LoginForm.jsx";
 import RegisterForm from '../components/RegisterForm.jsx'
 
 const Login = () => {
+
+  const [showLogin, setshowLogin] = useState(true);
+
   return (
     <div>
-      <LoginForm />
-      <RegisterForm />
+      {showLogin ? <LoginForm/> : <RegisterForm/> }
+      <button onClick={() => setshowLogin(!showLogin)}> {showLogin ? 'Not a user? Register' : 'Already a user? Login'} </button>
     </div>
   );
 };

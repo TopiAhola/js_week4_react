@@ -44,6 +44,7 @@ const useAuthentication = () => {
 };
 
 const useUser = () => {
+  //hakee käyttäjätiedot tokenin perusteella
   const getUserByToken = async (token) => {
     const options = {
       method: 'GET',
@@ -57,9 +58,25 @@ const useUser = () => {
       options
     );
     return tokenResult;
+  }
+
+  const postUser = async (user) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }
+
+    const postResult = fetchData(
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/token',
+      options
+    );
+    return postResult;
 
   }
-  return {getUserByToken}
+  return {getUserByToken, postUser}
 }
 
 
