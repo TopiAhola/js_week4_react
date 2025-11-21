@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "username": "asdfgh",
     "password": "asdqwe123",
-    "email": "topiaho@metropolia.fi"
+    "email": "ttt@example.fi"
 }
 
 ### login
@@ -50,5 +50,5 @@ Content-Type: application/json
 {
     "username": "asdfgh",
     "password": "",
-    "email": "topiaho@example.com"
+    "email": "ttt@example.com"
 }
