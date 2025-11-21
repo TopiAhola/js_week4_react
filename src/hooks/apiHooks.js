@@ -113,7 +113,12 @@ const useFile = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer "+token.replaceAll('"','')
       },
-      body: JSON.stringify({...inputs, ...file}) //puretaan milemmat objektit
+      body: JSON.stringify({...inputs,
+        filename: file.name,
+        media_type: file.type,
+        filesize: file.size,
+
+      }) //puretaan milemmat objektit
     };
 
     console.log("postMedia:" + mediaApi + " " + options);
