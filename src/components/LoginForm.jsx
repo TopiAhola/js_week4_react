@@ -17,6 +17,11 @@ const LoginForm = () => {
     console.log(inputData);
     const loginResult = await postLogin(inputData);
     console.log(loginResult);
+    const token = loginResult.token;
+
+    localStorage.setItem("token", token);
+
+    //älä kirjaa käyttäjätietoja tuotannossa!
   }
 
   const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, initValues);

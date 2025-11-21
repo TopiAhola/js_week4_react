@@ -35,7 +35,7 @@ const useAuthentication = () => {
       },
       body: JSON.stringify(inputs),
     };
-    const loginResult = await fetchData("https://media2.edu.metropolia.fi/restaurant/api/v1/auth/login", fetchOptions);  //import.meta.env.VITE_AUTH_API + '/auth/login'
+    const loginResult = await fetchData("https://media2.edu.metropolia.fi/auth-api/api/v1/auth/login", fetchOptions);  //import.meta.env.VITE_AUTH_API + '/auth/login'
     return loginResult;
   };
 
@@ -43,4 +43,24 @@ const useAuthentication = () => {
 
 };
 
-export {useMedia, useAuthentication};
+const useUser = () => {
+  const getUserByToken = async (token) => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer '+token
+      }
+    }
+
+    const tokenResult = fetchData(
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/token',
+      options
+    );
+    return tokenResult;
+
+  }
+  return {getUserByToken}
+}
+
+
+export {useMedia, useAuthentication, useUser};

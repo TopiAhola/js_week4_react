@@ -22,7 +22,7 @@ const Forms = () => {
 
     } else if (event.target.type === 'radio') {
       const targetName = event.target.name;
-      const targetValue = event.target.checked;
+      const targetValue = event.target.id;
       console.log('name: '+targetName+' value: '+targetValue);
       setInputs({...inputs, [targetName]:targetValue}); //deserialisoi inputs, lisää uusi input perään
 

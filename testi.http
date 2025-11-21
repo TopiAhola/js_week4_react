@@ -1,9 +1,20 @@
-### login ??
-POST https://media2.edu.metropolia.fi/auth-api/api/v1
+### create user
+POST https://media2.edu.metropolia.fi/auth-api/api/v1/users
+Content-Type: application/json
 
 {
-    "username": "test_user",
-    "password": "12345"
+    "username": "asdfgh",
+    "password": "asdqwe123",
+    "email": "topiaho@metropolia.fi"
+}
+
+### login
+POST https://media2.edu.metropolia.fi/auth-api/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "asdfgh",
+  "password": "asdqwe123"
 }
 
 ### login2
@@ -15,17 +26,10 @@ POST https://media2.edu.metropolia.fi/media-api/api/v1/auth/login
     "password": "12345"
 }
 
-### create user
 
-POST https://media2.edu.metropolia.fi/auth-api/api/v1/users
-
-{
-    "username": "testi2011",
-    "password": "asdfghjk"
-}
-
-
-
+### get user by token
+GET https://media2.edu.metropolia.fi/auth-api/api/v1/users/token
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo1NzQsImxldmVsX25hbWUiOiJVc2VyIiwiaWF0IjoxNzYzNzEyODM2fQ.1vaNQ6bSYtuuCWQkD-Mt_tdl5__o3DBjN0terDDluz4
 
 
 ### get media
