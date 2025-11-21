@@ -91,7 +91,7 @@ const useFile = () => {
       method: "POST",
       headers: {
         /*ContentType: "multipart/form-data",*/
-        Authorization: "Bearer ".concat(token)
+        Authorization: "Bearer "+token.replaceAll('"','')
       },
       body: formData,
     };
@@ -111,15 +111,16 @@ const useFile = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer ".concat(token)
+        Authorization: "Bearer "+token.replaceAll('"','')
       },
-      body: JSON.stringify(...inputs, ...file) //puretaan milemmat objektit
+      body: JSON.stringify({...inputs, ...file}) //puretaan milemmat objektit
     };
 
     console.log("postMedia:" + mediaApi + " " + options);
+
     console.log(options);
     const postMediaResult = await fetchData(
-      "https://media2.edu.metropolia.fi/auth-api/api/v1/auth/login",
+      mediaApi,
       options
     );
     return postMediaResult;
