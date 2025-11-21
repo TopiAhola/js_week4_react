@@ -36,9 +36,16 @@ const UserProvider = ({ children }) => {
 
   const handleLogout = () => {
     try {
-      // TODO: remove token from local storage
-      // TODO: set user to null
-      // TODO: navigate to home
+      // remove token from local storage
+      localStorage.removeItem("token");
+
+      // set user to null
+      setUser(null);
+
+      // navigate to home
+      navigate("/");
+      console.log('Logged out..');
+
     } catch (e) {
       console.log(e.message);
     }
@@ -47,17 +54,32 @@ const UserProvider = ({ children }) => {
   // handleAutoLogin is used when the app is loaded to check if there is a valid token in local storage
   const handleAutoLogin = async () => {
     try {
-      // TODO: get token from local storage
-      // TODO: if token exists, get user data from API
-      // TODO: set user to state
-      // TODO: navigate to home
+
+      //get token from local storage
+      const token = localStorage.getItem("token");
+
+      //if token exists, get user data from API
+      if(token){
+        const userByToken = await getUserByToken(token);
+
+        //set user to state
+        if (userByToken) {
+          setUser(userByToken);
+        }
+
+      } else {
+        console.log('No token');
+      }
+      //navigate to home
+      navigate("/");
+
     } catch (e) {
       console.log(e.message);
     }
   };
 
   return (
-    <UserContext.Provider value={user, handleLogin}>
+    <UserContext.Provider value={ {user, handleLogin, handleLogout, handleAutoLogin} }>
       {children}
     </UserContext.Provider>
   );

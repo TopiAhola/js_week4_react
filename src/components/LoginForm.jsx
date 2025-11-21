@@ -6,7 +6,7 @@ import { useUserContext } from "../hooks/contextHooks.js";
 // LoginForm.jsx
 const LoginForm = () => {
 
-  const {postLogin} = useAuthentication();
+  //const {postLogin} = useAuthentication();
   //korvataan tällä:
   const { handleLogin } = useUserContext();
 
@@ -19,10 +19,10 @@ const LoginForm = () => {
   const doLogin = async (inputData) => {
     console.log(inputData);
     const loginResult = await handleLogin(inputData);  //tarvitaanko paluuarvoa jos state saadaan contextin kautta?
-    console.log(loginResult);
-    const token = loginResult.token;
 
-    localStorage.setItem("token", token);
+  /*  console.log(loginResult);
+    const token = loginResult.token;
+    localStorage.setItem("token", token);*/
 
     //älä kirjaa käyttäjätietoja tuotannossa!
   }
