@@ -6,8 +6,6 @@ import { fetchData } from "../utils/fetchData.js";
 const useMedia = () => {
 
   const [mediaArray, setMediaArray] = useState([]);
-
-
   useEffect(() => {
     try {
       getMedia().then(
@@ -47,37 +45,90 @@ const useUser = () => {
   //hakee käyttäjätiedot tokenin perusteella
   const getUserByToken = async (token) => {
     const options = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'Authorization': 'Bearer '+token
-      }
-    }
+        Authorization: "Bearer " + token,
+      },
+    };
 
     const tokenResult = fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/token',
+      "https://media2.edu.metropolia.fi/auth-api/api/v1/users/token",
       options
     );
     return tokenResult;
-  }
+  };
 
   const postUser = async (user) => {
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(user)
-    }
+      body: JSON.stringify(user),
+    };
 
     const postResult = fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/token',
+      "https://media2.edu.metropolia.fi/auth-api/api/v1/users/token",
       options
     );
     return postResult;
+  };
+  return { getUserByToken, postUser };
+};
 
-  }
-  return {getUserByToken, postUser}
-}
+const useFile = () => {
+  const postFile = async (file, token) => {
+    //create FormData object
+    const formData = new FormData();
+
+    //add file to FormData
+    formData.append("file", file);
+
+    //upload the file to file server and get the file data (url = import.meta.env.VITE_UPLOAD_SERVER + '/upload')
+    const uploadApi =
+      "https://media2.edu.metropolia.fi/upload-api/api/v1/upload";
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: "Bearer " +token,
+      },
+      body: formData,
+    };
+
+    console.log("postFile:" + uploadApi + " " + options);
+    console.log(options);
+    const uploadResponse = await fetch(uploadApi, options);
+    console.log(uploadResponse);
+
+    // return the file data.
+    return uploadResponse.data;
+  };
+
+  const postMedia = async (file, inputs, token) => {
+    const mediaApi = 'https://media2.edu.metropolia.fi/media-api/api/v1'
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " +token,
+      },
+      body: JSON.stringify(...inputs, ...file) //puretaan milemmat objektit
+    };
+
+    console.log("postMedia:" + mediaApi + " " + options);
+    console.log(options);
+    const postMediaResult = await fetchData(
+      "https://media2.edu.metropolia.fi/auth-api/api/v1/auth/login",
+      options
+    );
+    return postMediaResult;
+  };
+
+  return { postFile, postMedia };
+};
 
 
-export {useMedia, useAuthentication, useUser};
+
+
+export {useMedia, useAuthentication, useUser, useFile};
