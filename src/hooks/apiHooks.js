@@ -69,12 +69,16 @@ const useUser = () => {
     }
 
     const postResult = fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/token',
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/',
       options
     );
     return postResult;
 
   }
+
+
+
+
   return {getUserByToken, postUser}
 }
 

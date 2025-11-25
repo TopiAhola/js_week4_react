@@ -5,20 +5,20 @@ import { useAuthentication } from "../hooks/apiHooks.js";
 const RegisterForm = () => {
 
 
-  const {postLogin} = useAuthentication();  //TODO:: postUser ?
-
+  const {postLogin, postUser} = useAuthentication();
   const initValues = {
     username: '',
+    emai: '',
     password: '',
   };
 
   //callback funktio useFormille
   const doRegister = async (inputData) => {
     console.log(inputData);
-    const loginResult = await postLogin(inputData);
+    const loginResult = await postUser(inputData);
 
     console.log(loginResult);
-    const token = loginResult.token;   //TODO: automaattinen kirjautuminen?
+    const token = loginResult.token;
 
     localStorage.setItem("token", token);
 
@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
   return (
     <div>
-      <h1>Registe</h1>
+      <h1>Register</h1>
       <form onSubmit={ handleSubmit }>
         <div>
           <label htmlFor="register_user">Username</label>
@@ -40,6 +40,16 @@ const RegisterForm = () => {
             id="register_user"
             onChange={ handleInputChange }
             autoComplete="username"
+          />
+        </div>
+        <div>
+          <label htmlFor="register_email">Email</label>
+          <input
+            name="email"
+            type="text"
+            id="register_email"
+            onChange={ handleInputChange }
+            autoComplete="email"
           />
         </div>
         <div>
