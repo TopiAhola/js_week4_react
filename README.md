@@ -18,6 +18,8 @@ https://users.metropolia.fi/~topiaho/Web-sovelluskehitys/wsk_hooks/
 
 ## Viikko 5. React
 
-Tehtävät tehty tässä repositiossa ja siirretty omaan js_week5 repositioon.
+Jatkuu samassa repositiossa.
+
+#### 1. Custom Hooks
 
 
