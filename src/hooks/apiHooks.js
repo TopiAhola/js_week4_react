@@ -7,7 +7,6 @@ const useMedia = () => {
 
   const [mediaArray, setMediaArray] = useState([]);
 
-
   useEffect(() => {
     try {
       getMedia().then(
