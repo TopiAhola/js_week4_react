@@ -1,11 +1,13 @@
 import React from "react";
 import useForm from '../hooks/formHooks.js'
 import { useAuthentication } from "../hooks/apiHooks.js";
+import {useNavigate} from "react-router";
 
 // LoginForm.jsx
 const LoginForm = () => {
 
   const {postLogin} = useAuthentication();
+  const  navigate  = useNavigate();
 
   const initValues = {
     username: '',
@@ -21,6 +23,7 @@ const LoginForm = () => {
 
     localStorage.setItem("token", token);
 
+    navigate('/profile');
     //älä kirjaa käyttäjätietoja tuotannossa!
   }
 
