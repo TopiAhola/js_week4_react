@@ -5,3 +5,51 @@ npm install --save-dev --save-exact prettier
 
 proptypes:
     npm install prop-types
+
+
+routing:
+    npm install react-router
+
+
+css:
+    npm install picolib
+    npm install @picocss/pico
+
+
+
+
+
+
+////////////////////////////////////////////////////
+TURHAAAA:
+
+bugein korjaus:
+     npm install @swc/wasm
+     npm install swc
+     npm uninstall picolib
+    npm uninstall prop-types
+    npm uninstall swc
+    npm uninstall @swc/wasm
+    npm update
+
+
+    npm install swc
+    npm install @swc/wasm
+    npm install @swc/core-win32-x64-msvc
+
+    build({
+      loader: { "packages": "external" },
+      ...
+    })
+
+Lisää:
+npm install vite-plugin-node-polyfills --save-dev
+
+
+uusi yritys:
+
+npm create react-router@latest ???
+
+tämä:
+
+npm install react-router@6.30.2

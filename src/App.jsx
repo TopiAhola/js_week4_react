@@ -1,34 +1,47 @@
-import './App.css';
-import Greeting from "./components/Greetings.jsx";
-import Footer from "./components/Footer.jsx";
-import Pizzamenu from "./components/Pizzamenu.jsx";
-import CounterButton from "./components/CounterButton.jsx";
-import {useState} from "react";
+import { BrowserRouter, Routes, Route, Form } from "react-router";
 
+import Single from "./views/Single.jsx";
+import Layout from "./components/Layout.jsx";
+import Home from './views/Home.jsx';
+import Upload from "./views/Upload.jsx";
+import Profile from "./views/Profile.jsx";
+import Forms from "./components/Forms.jsx";
+import Logout from "./views/Logout.jsx";
+import Login from "./views/Login.jsx";
 
+import { UserProvider } from './contexts/UserContext.jsx';
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
-//funktio joka palauttaa JSX (javascriptxml)
 const App = () => {
-
-    const name = 'Topi';
-    const age = 69;
-    const isTeacher = true;
     return (
-        <>
-            <h1>My App</h1>
-            <Greeting name={name} age={age} isTeacher={isTeacher} />
-            <ul>
-                <li>1. jutu</li>
-                <li>2. jutu</li>
-            </ul>
-            <Greeting></Greeting>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <UserProvider>
 
-            <Pizzamenu menuId='menu1'></Pizzamenu>
-            <Footer/>
-            <CounterButton/>
-        </>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="" element={<Home />} />
 
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Profile/>
+              </ProtectedRoute>}
+            />
+
+            <Route path="/upload" element={
+              <ProtectedRoute>
+                <Upload/>
+              </ProtectedRoute>}
+            />
+
+            <Route path="/single" element={<Single />} />
+            <Route path="/forms" element={<Forms />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+          </Route>
+        </Routes>
+
+      </UserProvider>
+      </BrowserRouter>
     );
-}
-
+};
 export default App;
