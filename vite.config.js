@@ -8,7 +8,7 @@ export default defineConfig({
     react()
   ],
 
-  base: '/~topiaho/Web-sovelluskehitys/wsk_upload/',
+  base: '/~topiaho/Web-sovelluskehitys/wsk_context/',
 
 });
   // base when deployed:
