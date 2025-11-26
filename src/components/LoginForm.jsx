@@ -2,6 +2,7 @@ import React from "react";
 import useForm from '../hooks/formHooks.js'
 import { useAuthentication } from "../hooks/apiHooks.js";
 import { useUserContext } from "../hooks/contextHooks.js";
+import {useNavigate} from "react-router";
 
 // LoginForm.jsx
 const LoginForm = () => {
@@ -9,6 +10,8 @@ const LoginForm = () => {
   //const {postLogin} = useAuthentication();
   //korvataan tällä:
   const { handleLogin } = useUserContext();
+
+  //const  navigate  = useNavigate();
 
   const initValues = {
     username: '',
@@ -24,6 +27,7 @@ const LoginForm = () => {
     const token = loginResult.token;
     localStorage.setItem("token", token);*/
 
+    //navigate('/profile');
     //älä kirjaa käyttäjätietoja tuotannossa!
   }
 
