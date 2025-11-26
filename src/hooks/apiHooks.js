@@ -6,11 +6,17 @@ import { fetchData } from "../utils/fetchData.js";
 const useMedia = () => {
 
   const [mediaArray, setMediaArray] = useState([]);
-  useEffect(() => {
+
+  useEffect( () => {
     try {
       getMedia().then(
         (array) => {
-          setMediaArray(array);
+          if (array.length !== mediaArray.length) {
+            setMediaArray(array);
+          } else {
+            console.log('mediaArray is unchanged');
+          }
+
         },
         (error) => {
           console.log(error);
@@ -47,7 +53,7 @@ const useUser = () => {
     const options = {
       method: "GET",
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer "+token.replaceAll('"','') //tokenissa on lainausmerkit...
       },
     };
 
@@ -55,8 +61,8 @@ const useUser = () => {
       "https://media2.edu.metropolia.fi/auth-api/api/v1/users/token",
       options
     );
-    //console.log(tokenResult.message);
-    return tokenResult.user;
+    console.log(tokenResult);
+    return tokenResult;
   };
 
   const postUser = async (user) => {

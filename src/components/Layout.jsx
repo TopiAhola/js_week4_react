@@ -6,7 +6,8 @@ import { useUserContext } from "../hooks/contextHooks.js";
 const Layout = () => {
 
   const  {handleLogin, handleAutoLogin } = useUserContext();
-  handleAutoLogin();
+
+  //handleAutoLogin();  //paskaa
 
   return (
     <div>
