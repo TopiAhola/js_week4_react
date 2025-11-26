@@ -5,11 +5,13 @@ import { useUserContext } from '../hooks/contextHooks';
 const ProtectedRoute = ({ children }) => {
   const { user } = useUserContext();
 
-  if (!user) {
+  if (user === null) {
     return <Navigate to="/" />;  //Voiko vain palauttaa tyhjän elementin?
+  } else {
+    return children;
   }
 
-  return children;
+
 };
 
 export default ProtectedRoute;

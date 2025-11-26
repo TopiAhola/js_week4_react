@@ -7,7 +7,7 @@ const Layout = () => {
 
   const  {handleLogin, handleAutoLogin } = useUserContext();
 
-  //handleAutoLogin();  //paskaa
+  handleAutoLogin();
 
   return (
     <div>

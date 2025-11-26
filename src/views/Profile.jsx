@@ -10,10 +10,11 @@ const Profile = () => {
   const { getUserByToken } = useUser();
 
 
-  useLocation()
 
- /*
- //Tätä ei käytetä jos user state tulee user contextin kautta
+
+
+
+/* //Tätä ei käytetä jos user state tulee user contextin kautta
  useEffect(() => {
     const getUserData = async () => {
       const token = localStorage.getItem("token");
@@ -21,15 +22,17 @@ const Profile = () => {
         const userResponse = await getUserByToken(token);
         //setUser(userResponse.user);
       }
-
-
-
     };
-    getUserData();
+  }, [user]);*/
 
-  }, []);
 
-*/
+  //
+  useEffect(() => {
+
+  }, [user]);
+
+  console.log('profile view with user: ', user);
+
   return (
     <div>
       Profile view...
