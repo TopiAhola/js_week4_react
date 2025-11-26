@@ -8,7 +8,7 @@ export default defineConfig({
     react()
   ],
 
-  base: '/~topiaho/Web-sovelluskehitys/wsk_forms/',
+  base: '/~topiaho/Web-sovelluskehitys/wsk_custom_hooks/',
 
 });
   // base when deployed:
