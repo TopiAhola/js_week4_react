@@ -5,6 +5,7 @@ import { useFile } from "../hooks/apiHooks.js";
 
 const Upload = ()=>{
 
+  const navigate = useNavigate();
 
   const initState = {
     title:'', description:''
@@ -29,16 +30,15 @@ const Upload = ()=>{
     try {
       const {postFile, postMedia} = useFile();
 
-      // TODO: call postFile function (see below)  APIhooks
+      //call postFile function (see below)  APIhooks
       const postFileResponse = await postFile(file,token);
       console.log(postFileResponse);
 
-      // TODO: call postMedia function (see below)
+      //call postMedia function (see below)
       const postMediaResponse = await postMedia(file, inputs, token, postFileResponse);
       console.log(postMediaResponse);
 
       //redirect to Home
-      const navigate = useNavigate();
       navigate("/");
 
     } catch (e) {
