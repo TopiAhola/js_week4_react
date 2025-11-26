@@ -1,6 +1,9 @@
-## Viikko 4 React
+## Viikko 4 & 5 React
 
-### Tehtävät:
+Viikko 5 React tehtävät jatkuvat samassa repositiossa.
+
+
+## Viikko 4 Tehtävät:
 
 #### 1. first-component
 repositiossa
@@ -16,11 +19,7 @@ https://users.metropolia.fi/~topiaho/Web-sovelluskehitys/wsk_routing/
 https://users.metropolia.fi/~topiaho/Web-sovelluskehitys/wsk_hooks/
 
 
-## Viikko 5 React
-
-Jatkuu samassa repositiossa.
-
-### Tehtävät:
+## Viikko 5 Tehtävät:
 
 #### 1. Custom Hooks
 
