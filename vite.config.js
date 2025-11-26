@@ -8,7 +8,7 @@ export default defineConfig({
     react()
   ],
 
-  base: '/~topiaho/Web-sovelluskehitys/wsk_custom_hooks/',
+  base: '/',
 
 });
   // base when deployed:
@@ -18,3 +18,4 @@ export default defineConfig({
 //week 5 :
 // /~topiaho/Web-sovelluskehitys/wsk_custom_hooks/
 // /~topiaho/Web-sovelluskehitys/wsk_forms/
+// /~topiaho/Web-sovelluskehitys/wsk_context/

@@ -1,8 +1,13 @@
 import App from "../App.jsx";
 import { Link, Outlet, } from "react-router";
+import { useUserContext } from "../hooks/contextHooks.js";
 
 
 const Layout = () => {
+
+  const  {handleLogin, handleAutoLogin } = useUserContext();
+  handleAutoLogin();
+
   return (
     <div>
       <nav>

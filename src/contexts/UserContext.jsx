@@ -11,7 +11,7 @@ const UserProvider = ({ children }) => {
   const { postLogin } = useAuthentication();
   const { getUserByToken } = useUser();
   const navigate = useNavigate();
-  const location = useLocation();
+  let location = useLocation();
 
   // login, logout and autologin functions are here instead of components
   const handleLogin = async (credentials) => {
@@ -65,15 +65,22 @@ const UserProvider = ({ children }) => {
         //set user to state
         if (userByToken) {
           setUser(userByToken);
+        } else {
+          setUser(null);
+          localStorage.removeItem("token");
         }
+
+        //return to location
+        navigate(location.pathname);
+
+        //navigate to
+        console.log('Navigate to: '+location.pathname);
+        navigate(location.pathname);
 
       } else {
         console.log('No token');
       }
 
-      //navigate to
-      console.log('Naviage to: '+location.pathname);
-      navigate(location.pathname);
 
     } catch (e) {
       console.log(e.message);

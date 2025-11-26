@@ -26,6 +26,7 @@ const App = () => {
                 <Profile/>
               </ProtectedRoute>}
             />
+
             <Route path="/upload" element={
               <ProtectedRoute>
                 <Upload/>

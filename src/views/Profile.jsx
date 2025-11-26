@@ -2,28 +2,42 @@ import {useNavigate} from 'react-router';
 import {useUser} from "../hooks/apiHooks.js";
 import { useEffect, useState } from "react";
 import { useUserContext } from "../hooks/contextHooks.js";
+import { useLocation} from "react-router";
 
 const Profile = () => {
   //const [user, setUser] = useState({});
   const {user} = useUserContext();
   const { getUserByToken } = useUser();
 
-  useEffect(() => {
+
+  useLocation()
+
+ /*
+ //Tätä ei käytetä jos user state tulee user contextin kautta
+ useEffect(() => {
     const getUserData = async () => {
       const token = localStorage.getItem("token");
-      const userResponse = await getUserByToken(token);
+      if (token) {
+        const userResponse = await getUserByToken(token);
+        //setUser(userResponse.user);
+      }
 
-      //setUser(userResponse.user);
+
+
     };
     getUserData();
 
   }, []);
 
-
+*/
   return (
     <div>
       Profile view...
       {user && <h2>{user.username}</h2>}
+      {user && <div>{user.email}</div>}
+      {user && <div>{user.created_at}</div>}
+      {user && <div>User level: {user.level_name}</div>}
+
     </div>
   );
 };

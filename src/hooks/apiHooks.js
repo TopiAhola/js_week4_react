@@ -55,7 +55,8 @@ const useUser = () => {
       "https://media2.edu.metropolia.fi/auth-api/api/v1/users/token",
       options
     );
-    return tokenResult;
+    //console.log(tokenResult.message);
+    return tokenResult.user;
   };
 
   const postUser = async (user) => {
