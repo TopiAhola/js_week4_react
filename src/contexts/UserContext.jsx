@@ -69,7 +69,7 @@ const UserProvider = ({ children }) => {
           console.log('handleAutoLogin sets user', userByToken);
 
           //navigate to previous location
-          navigate(location.pathname);
+          navigate(-1);
 
         } /*else {
           setUser(null);
@@ -78,7 +78,8 @@ const UserProvider = ({ children }) => {
 
 
       } else {
-        console.log('No token');
+        console.log('No token or user not null');
+
       }
 
 
