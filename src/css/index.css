@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
+
 {
   --oma-border-color: rgb(241, 255, 47);
-  --oma-background-color: rgb(255, 143, 203)
-;
+  --oma-background-color: rgb(255, 143, 203);
 }
 
 @layer base {
@@ -16,5 +16,6 @@
 }
 
 body {
-
+  background: var(--oma-background-color);
 }
+
