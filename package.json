@@ -13,10 +13,13 @@
     "@swc/core": "^1.15.2",
     "@swc/core-win32-x64-msvc": "^1.15.2",
     "@swc/wasm": "^1.15.2",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/vite": "^4.1.17",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router": "^7.9.6",
-    "swc": "^1.0.11"
+    "swc": "^1.0.11",
+    "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

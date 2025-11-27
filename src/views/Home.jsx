@@ -17,7 +17,7 @@ const { mediaArray } = useMedia();
     <>
       <h2>My Media</h2>
       <SingleView key='dialog' selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
-      <table>
+      <table className="">
         <thead>
           <tr>
             <th>Thumbnail</th>
