@@ -3,6 +3,8 @@ import SingleView from "./SingleView";
 import {Link} from "react-router";
 import { useUserContext } from "../hooks/contextHooks.js";
 import { useMedia } from "../hooks/apiHooks.js";
+import { useState } from "react";
+import EditDialog from "./editDialog.jsx";
 
 
 
@@ -11,12 +13,12 @@ const MediaRow = (props) => {
 
   const { item, selectedItem, setSelectedItem } = props;
   const { user } = useUserContext();
-  const {deleteMedia} = useMedia();
+  const {deleteMedia, modifyMedia} = useMedia();
 
 
   const handleModify = ()=>{
     console.log('handleModify');
-
+    setShowDialog(true);
 
   };
 
@@ -29,6 +31,7 @@ const MediaRow = (props) => {
   };
 
  const canEdit = ()=>{return (user !== null) && (user.id === item.user_id) }
+ const [showDialog, setShowDialog] = useState(false)
 
   return (
     <tr>
@@ -55,6 +58,13 @@ const MediaRow = (props) => {
           <td>
             <button onClick={handleDelete}>Delete</button>
           </td>
+          {showDialog &&
+            (<EditDialog
+            item={item}
+            modifyMedia={modifyMedia}
+            setShowDialog={setShowDialog}>
+
+          </EditDialog>)}
         </>)
       }
     </tr>
