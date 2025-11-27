@@ -1,25 +1,23 @@
-## Viikko 4 & 5 React
+# Viikko 4, 5, 6 React
 
-Viikko 5 React tehtävät jatkuvat samassa repositiossa.
+Tehtävät samassa repositiossa.
 
+Sivut: https://users.metropolia.fi/~topiaho/Web-sovelluskehitys
 
-## Viikko 4 Tehtävät:
+## Viikko 4 Tehtävät
 
 #### 1. first-component
-repositiossa
 
 #### 2. state-management
-repositiossa
 
 #### 3. routing
 https://users.metropolia.fi/~topiaho/Web-sovelluskehitys/wsk_routing/
-
 
 #### 4. hooks
 https://users.metropolia.fi/~topiaho/Web-sovelluskehitys/wsk_hooks/
 
 
-## Viikko 5 Tehtävät:
+## Viikko 5 Tehtävät
 
 #### 1. Custom Hooks
 
@@ -30,7 +28,9 @@ https://users.metropolia.fi/~topiaho/Web-sovelluskehitys/wsk_hooks/
 #### 4. Upload
 
 
+## Viikko 6 Tehtävät:
 
+#### 1. Tailwind
 
 
 
