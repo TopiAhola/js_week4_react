@@ -2,12 +2,16 @@ import Home from "../views/Home.jsx";
 import SingleView from "./SingleView";
 import {Link} from "react-router";
 import { useUserContext } from "../hooks/contextHooks.js";
-import { useEffect } from "react";
+import { useMedia } from "../hooks/apiHooks.js";
+
+
+
 
 const MediaRow = (props) => {
+
   const { item, selectedItem, setSelectedItem } = props;
   const { user } = useUserContext();
-
+  const {deleteMedia} = useMedia();
 
 
   const handleModify = ()=>{
@@ -17,6 +21,9 @@ const MediaRow = (props) => {
 
   const handleDelete = ()=>{
     console.log('handleDelete');
+    if(confirm("Are you sure you want to delete?")){
+      deleteMedia(item.media_id);
+    }
 
   };
 

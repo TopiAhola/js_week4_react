@@ -6,7 +6,6 @@ import { fetchData } from "../utils/fetchData.js";
 const useMedia = () => {
 
   const [mediaArray, setMediaArray] = useState([]);
-
   useEffect( () => {
     try {
       getMedia().then(
@@ -27,8 +26,26 @@ const useMedia = () => {
     }
   }, []);
 
-  return  {mediaArray} ;
-};
+  const deleteMedia = async (media_id, token) => {
+    const deleteOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: "Bearer "+token.replaceAll('"','')
+      },
+
+    };
+    const deleteResult = await fetchData(
+      import.meta.env.VITE_MEDIA_API + "/media/"+media_id,
+      deleteOptions);
+    console.log(deleteResult);
+    return deleteResult;
+  };
+
+  return  {mediaArray, deleteMedia};
+}
+
+
 
 const useAuthentication = () => {
   const postLogin = async (inputs) => {
