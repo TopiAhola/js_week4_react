@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router';
 const UserContext = createContext(null);
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const { postLogin } = useAuthentication();
   const { getUserByToken } = useUser();
   const navigate = useNavigate();
@@ -60,16 +60,16 @@ const UserProvider = ({ children }) => {
       const token = localStorage.getItem("token");
 
       //if token exists, get user data from API
-      if(token){
+      if(token && user === null){
         const userByToken = await getUserByToken(token);
 
         //set user to state
         if (userByToken) {
           setUser(userByToken);
-          console.log('handleAutoLogin sets user');
+          console.log('handleAutoLogin sets user', userByToken);
 
-          //navigate to home
-          navigate("/");
+          //navigate to previous location
+          navigate(-1);
 
         } /*else {
           setUser(null);
@@ -78,7 +78,8 @@ const UserProvider = ({ children }) => {
 
 
       } else {
-        console.log('No token');
+        console.log('No token or user not null');
+
       }
 
 

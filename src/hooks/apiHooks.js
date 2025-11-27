@@ -57,12 +57,12 @@ const useUser = () => {
       },
     };
 
-    const tokenResult = fetchData(
+    const tokenResult = await fetchData(
       "https://media2.edu.metropolia.fi/auth-api/api/v1/users/token",
       options
     );
     console.log(tokenResult);
-    return tokenResult;
+    return tokenResult.user;
   };
 
   const postUser = async (user) => {
@@ -74,7 +74,7 @@ const useUser = () => {
       body: JSON.stringify(user),
     };
 
-    const postResult = fetchData(
+    const postResult = await fetchData(
       'https://media2.edu.metropolia.fi/auth-api/api/v1/users/',
       options
     );

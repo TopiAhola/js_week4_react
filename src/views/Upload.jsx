@@ -84,7 +84,7 @@ const Upload = ()=>{
           src={
             file
               ? URL.createObjectURL(file)
-              : 'https://via.placeholder.com/200?text=Choose+image'
+              : "./src/assets/placeholder.bmp"
           }
           alt="preview"
           width="200"

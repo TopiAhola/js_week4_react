@@ -15,7 +15,9 @@ const getMedia = async () => {
         'https://media2.edu.metropolia.fi/auth-api/api/v1/users/'+item.user_id
         //import.meta.env.VITE_MEDIA_API +'/users/' + item.id
       );
-      console.log(result);
+
+      //console.log(result);
+
       return { ...item, username: result.username };
     })
   )
