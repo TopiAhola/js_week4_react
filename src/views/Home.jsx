@@ -4,6 +4,7 @@ import { useMedia } from "../hooks/apiHooks.js";
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
+import getMedia from "../utils/getMedia.js";
 
 
 const Home = () => {
@@ -11,7 +12,27 @@ const Home = () => {
   const [selectedItem, setSelectedItem] = useState(null);
 
 
-const { mediaArray } = useMedia();
+const { mediaArray, setMediaArray } = useMedia();
+
+  useEffect( () => {
+    try {
+      getMedia().then(
+        (array) => {
+          if (array.length !== mediaArray.length) {
+            setMediaArray(array);
+          } else {
+            console.log('mediaArray is unchanged');
+          }
+
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   return (
     <>

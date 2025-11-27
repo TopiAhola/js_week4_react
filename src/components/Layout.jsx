@@ -18,9 +18,9 @@ const Layout = () => {
   return (
     <div>
       <nav className="bg-amber-300">
-        <ul className="flex *:hover:bg-blue-600  ">
-          <li>
-            <Link to="/">Home</Link>
+        <ul className="flex  *:hover:bg-blue-600 ">
+          <li className="hover:bg-amber-100">
+            <Link to="/" >Home</Link>
           </li>
 
           <li>

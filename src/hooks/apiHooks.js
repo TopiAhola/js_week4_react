@@ -6,25 +6,10 @@ import { fetchData } from "../utils/fetchData.js";
 const useMedia = () => {
 
   const [mediaArray, setMediaArray] = useState([]);
-  useEffect( () => {
-    try {
-      getMedia().then(
-        (array) => {
-          if (array.length !== mediaArray.length) {
-            setMediaArray(array);
-          } else {
-            console.log('mediaArray is unchanged');
-          }
 
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+
+
+
 
   const deleteMedia = async (media_id, token) => {
     const deleteOptions = {
@@ -42,7 +27,12 @@ const useMedia = () => {
     return deleteResult;
   };
 
-  return  {mediaArray, deleteMedia};
+  const modifyMedia = async () => {
+
+
+  }
+
+  return  {mediaArray, setMediaArray, deleteMedia, modifyMedia};
 }
 
 
