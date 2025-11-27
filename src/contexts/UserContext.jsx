@@ -69,7 +69,7 @@ const UserProvider = ({ children }) => {
           console.log('handleAutoLogin sets user', userByToken);
 
           //navigate to previous location
-          navigate(-1);
+          //navigate(-1);
 
         } /*else {
           setUser(null);

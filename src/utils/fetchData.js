@@ -6,8 +6,8 @@ const fetchData = async (url, options = {}) => {
 
   if (!response.ok) {
     // console.log('json', json);
-    if (json.message) {
-      throw new Error(json.message);
+    if (response.message) {
+      throw new Error(response.message);
     }
     throw new Error(`Error ${response.status} occured`);
   }
