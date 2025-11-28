@@ -1,18 +1,20 @@
 import MediaRow from "../components/MediaRow.jsx";
 import SingleView from "../components/SingleView.jsx";
 import { useMedia } from "../hooks/apiHooks.js";
+import EditDialog from "../components/EditDialog.jsx";
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
 import getMedia from "../utils/getMedia.js";
 
 
+
 const Home = () => {
   //state
   const [selectedItem, setSelectedItem] = useState(null);
+  const [editItem, setEditItem] = useState(null);
 
-
-const { mediaArray, setMediaArray } = useMedia();
+  const { mediaArray, setMediaArray, deleteMedia, modifyMedia } = useMedia();
 
   useEffect( () => {
     try {
@@ -34,10 +36,14 @@ const { mediaArray, setMediaArray } = useMedia();
     }
   }, []);
 
+
   return (
     <>
       <h2>My Media</h2>
       <SingleView key='dialog' selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
+      <EditDialog key='editDialog' item={editItem} modifyMedia={modifyMedia} setEditItem={setEditItem}
+      ></EditDialog>
+
       <table className="">
         <thead>
           <tr>
@@ -54,7 +60,13 @@ const { mediaArray, setMediaArray } = useMedia();
         <tbody>
           {/*mappaa mediat*/}
           {mediaArray.map((item, index) => {
-            return <MediaRow key={index} item={item} selectedItem={selectedItem} setSelectedItem={setSelectedItem}  />;
+            return <MediaRow key={index}
+                             item={item}
+                             selectedItem={selectedItem}
+                             setSelectedItem={setSelectedItem}
+                             setEditItem={setEditItem}
+
+            />;
           })}
         </tbody>
       </table>
