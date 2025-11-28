@@ -1,5 +1,5 @@
 import {useNavigate, useLocation} from 'react-router';
-
+import Likes from "../components/Likes.jsx";
 
 const Single = (props)=>{
    const navigate = useNavigate();
@@ -35,6 +35,7 @@ const Single = (props)=>{
                     <p>{new Date(selectedItem.created_at).toLocaleString("fi-FI")}</p>
                     <p>{selectedItem.filesize}</p>
                     <p>{selectedItem.media_type}</p>
+                    <Likes item={selectedItem}></Likes>
                     <button onClick={() => navigate(-1)}>Go back</button>
                 </div>
             </div>

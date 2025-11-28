@@ -151,7 +151,29 @@ const useFile = () => {
   return { postFile, postMedia };
 };
 
+const useLike = ()=>{
+
+  const postLike = async (media_id) => {
+
+  }
+
+  const deleteLike = async (media_id) => {
+
+  }
+
+  const getLikesByMedia = async (media_id) => {
 
 
 
-export {useMedia, useAuthentication, useUser, useFile};
+  }
+
+  const getLikesByUser = async (user_id) => {
+
+
+  }
+
+  return {postLike, deleteLike, getLikesByMedia, getLikesByUser};
+}
+
+
+export {useMedia, useAuthentication, useUser, useFile, useLike};
