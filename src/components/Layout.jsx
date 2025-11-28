@@ -19,7 +19,7 @@ const Layout = () => {
     <div>
       <nav className="[&>*]:bg-blue-400 w-auto" >
         <ul className="flex bg-red-500  [&_*]:hover:bg-blue-800 " >
-          <li className="hover:bg-red-500">
+          <li>
             <Link to="/" >Home</Link>
           </li>
 
@@ -39,7 +39,7 @@ const Layout = () => {
             <Link to="/login">Login</Link>
           </li>
 
-          <li>
+          <li className="[&,&_*]:hover:bg-red-500!">
             <Link to="/logout">Logout</Link>
           </li>
         </ul>
