@@ -173,8 +173,12 @@ const useFile = () => {
   return { postFile, postMedia };
 };
 
-const useLike = ()=> {
 
+/**
+ *
+ * @return {{postLike: (function(*, *): Promise<any>), deleteLike: (function(*, *): Promise<any>), getLikesByMedia: (function(*): Promise<any>), getLikesByUser: (function(*): Promise<any>)}}
+ */
+const useLike = ()=> {
 
   /**
    *
@@ -193,13 +197,19 @@ const useLike = ()=> {
     };
 
     const postResult = await fetchData(
-      'https://media2.edu.metropolia.fi/media-api/api/v1/likes/', //+media_id,
+      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/",
       options
     );
     return postResult;
   }
 
-  const deleteLike = async (media_id, token) => {
+  /**
+   *
+   * @param like_id
+   * @param token
+   * @return {Promise<any>} {"message": "Like deleted"}
+   */
+  const deleteLike = async (like_id, token) => {
     const options = {
       method: "DELETE",
       headers: {
@@ -208,9 +218,10 @@ const useLike = ()=> {
     };
 
     const postResult = await fetchData(
-      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/" + media_id,
+      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/"+like_id,
       options
     );
+
     return postResult;
   }
 
@@ -225,13 +236,12 @@ const useLike = ()=> {
 const getLikesByMedia = async (media_id) => {
     const options = {
       method: "GET",
-      headers: {
-
-      }
+      headers: {},
     };
 
     const likeArray = await fetchData(
-      'https://media2.edu.metropolia.fi/media-api/api/v1/likes/bymedia/'+media_id,
+      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/bymedia/" +
+        media_id,
       options
     );
     return likeArray;
@@ -239,17 +249,12 @@ const getLikesByMedia = async (media_id) => {
 
 
 /**
- * Palauttaa:
- * [
- *   {
- *     "like_id": 1,
+ * @param token
+ * @returns {Promise<*>} [ { "like_id": 1,
  *     "media_id": 1,
  *     "user_id": 1,
  *     "created_at": "2024-01-26T09:38:08.000Z"
- *   }
- * ]
- * @param token
- * @returns {Promise<*>}
+ *   } ]
  */
   const getLikesByUser = async (token) => {
     const options = {
