@@ -5,10 +5,8 @@ import { fetchData } from "../utils/fetchData.js";
 
 const useMedia = () => {
 
+  //media state
   const [mediaArray, setMediaArray] = useState([]);
-
-
-
 
 
   const deleteMedia = async (media_id, token) => {
@@ -23,13 +21,28 @@ const useMedia = () => {
     const deleteResult = await fetchData(
       import.meta.env.VITE_MEDIA_API + "/media/"+media_id,
       deleteOptions);
+
     console.log(deleteResult);
     return deleteResult;
   };
 
-  const modifyMedia = async () => {
+  const modifyMedia = async (media_id, title, description, token) => {
+    const modifyOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: "Bearer "+token.replaceAll('"','')
+      },
+      body: JSON.stringify({ title : title, description : description})
+    };
 
 
+    const modifyResult = await fetchData(
+      import.meta.env.VITE_MEDIA_API + "/media/"+media_id,
+      modifyOptions);
+
+    console.log(modifyResult);
+    return modifyResult;
   }
 
   return  {mediaArray, setMediaArray, deleteMedia, modifyMedia};
@@ -151,25 +164,93 @@ const useFile = () => {
   return { postFile, postMedia };
 };
 
-const useLike = ()=>{
+const useLike = ()=> {
 
-  const postLike = async (media_id) => {
+  const postLike = async (media_id, token) => {
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer "+token.replaceAll('"','')
+      }
+    };
 
+    const postResult = await fetchData(
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/'+media_id,
+      options
+    );
+    return postResult;
   }
 
-  const deleteLike = async (media_id) => {
+  const deleteLike = async (media_id, token) => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer "+token.replaceAll('"','')
+      }
+    };
 
+    const postResult = await fetchData(
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/'+media_id,
+      options
+    );
+    return postResult;
   }
 
-  const getLikesByMedia = async (media_id) => {
+/**
+ * Palauttaa:
+ * [
+ *   {
+ *     "like_id": 1,
+ *     "media_id": 1,
+ *     "user_id": 1,
+ *     "created_at": "2024-01-26T09:38:08.000Z"
+ *   }
+ * ]
+ * @param media_id
+ * @returns {Promise<*>}
+ */
+const getLikesByMedia = async (media_id) => {
+    const options = {
+      method: "GET",
+      headers: {
 
+      }
+    };
 
-
+    const likeArray = await fetchData(
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/bymedia/'+media_id,
+      options
+    );
+    return likeArray;
   }
 
-  const getLikesByUser = async (user_id) => {
 
+/**
+ * Palauttaa:
+ * [
+ *   {
+ *     "like_id": 1,
+ *     "media_id": 1,
+ *     "user_id": 1,
+ *     "created_at": "2024-01-26T09:38:08.000Z"
+ *   }
+ * ]
+ * @param token
+ * @returns {Promise<*>}
+ */
+  const getLikesByUser = async (token) => {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer "+token.replaceAll('"','')
+      }
+    };
 
+    const likeArray = await fetchData(
+      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/byuser/',
+      options
+    );
+    return likeArray
   }
 
   return {postLike, deleteLike, getLikesByMedia, getLikesByUser};
