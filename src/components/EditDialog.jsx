@@ -1,8 +1,8 @@
 import React from "react";
 import useForm from '../hooks/formHooks.js';
 
-const EditDialog = ({item, modifyMedia, setEditItem}) => {
 
+const EditDialog = ({item, modifyMedia, setEditItem}) => {
 
   function VideoOrImage (selectedItem) {
     if (selectedItem.media_type === 'video/mp4') {
@@ -19,12 +19,14 @@ const EditDialog = ({item, modifyMedia, setEditItem}) => {
     }
   }
 
+
   const initValues = {title: '', description: ''};
 
   //TODO: form jossa editoida mediaa
-  const handleEditForm = (inputs) => {
-    console.log('handleEditForm');
-    modifyMedia(inputs);
+  const handleEditForm = ({title, description }) => {
+    console.log("handleEditForm: " + inputs);
+    const modifyResult = modifyMedia(item.media_id, title, description, localStorage.getItem('token'));
+    modifyResult ? alert(modifyResult.message) : alert('Error updating media.');
   };
 
   const {inputs, handleInputChange, handleSubmit} = useForm(handleEditForm, initValues);

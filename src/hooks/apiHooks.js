@@ -4,48 +4,56 @@ import { fetchData } from "../utils/fetchData.js";
 
 
 const useMedia = () => {
-
   //media state
   const [mediaArray, setMediaArray] = useState([]);
 
-
   const deleteMedia = async (media_id, token) => {
     const deleteOptions = {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: "Bearer "+token.replaceAll('"','')
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token.replaceAll('"', ""),
       },
-
     };
     const deleteResult = await fetchData(
-      import.meta.env.VITE_MEDIA_API + "/media/"+media_id,
-      deleteOptions);
+      import.meta.env.VITE_MEDIA_API + "/media/" + media_id,
+      deleteOptions
+    );
 
     console.log(deleteResult);
     return deleteResult;
   };
 
+  /**
+   *
+   * @param media_id
+   * @param title
+   * @param description
+   * @param token
+   * @returns {Promise<any>} {"message": "Media updated"}
+   */
   const modifyMedia = async (media_id, title, description, token) => {
+    console.log("modifyMedia:", media_id, title, description, token);
+
     const modifyOptions = {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: "Bearer "+token.replaceAll('"','')
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token.replaceAll('"', ""),
       },
-      body: JSON.stringify({ title : title, description : description})
+      body: JSON.stringify({ title: title, description: description }),
     };
 
-
     const modifyResult = await fetchData(
-      import.meta.env.VITE_MEDIA_API + "/media/"+media_id,
-      modifyOptions);
+      import.meta.env.VITE_MEDIA_API + "/media/" + media_id,
+      modifyOptions
+    );
 
     console.log(modifyResult);
     return modifyResult;
-  }
+  };
 
-  return  {mediaArray, setMediaArray, deleteMedia, modifyMedia};
+  return { mediaArray, setMediaArray, deleteMedia, modifyMedia };
 }
 
 
