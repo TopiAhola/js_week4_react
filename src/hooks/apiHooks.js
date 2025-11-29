@@ -148,28 +148,25 @@ const useFile = () => {
   };
 
   const postMedia = async (file, inputs, token, postFileResponse) => {
-    const mediaApi = 'https://media2.edu.metropolia.fi/media-api/api/v1/media'
+    const mediaApi = "https://media2.edu.metropolia.fi/media-api/api/v1/media";
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer "+token.replaceAll('"','')
+        Authorization: "Bearer " + token.replaceAll('"', ""),
       },
-      body: JSON.stringify({...inputs,
+      body: JSON.stringify({
+        ...inputs,
         filename: postFileResponse.filename,
         media_type: postFileResponse.media_type,
         filesize: postFileResponse.filesize,
-
-      }) //puretaan milemmat objektit
+      }), //puretaan milemmat objektit
     };
 
     console.log("postMedia:" + mediaApi + " " + options);
 
     console.log(options);
-    const postMediaResult = await fetchData(
-      mediaApi,
-      options
-    );
+    const postMediaResult = await fetchData(mediaApi, options);
     return postMediaResult;
   };
 
@@ -178,16 +175,25 @@ const useFile = () => {
 
 const useLike = ()=> {
 
+
+  /**
+   *
+   * @param media_id
+   * @param token
+   * @return {Promise<any>} {"message": "Like added"}
+   */
   const postLike = async (media_id, token) => {
     const options = {
       method: "POST",
       headers: {
-        Authorization: "Bearer "+token.replaceAll('"','')
-      }
+        Authorization: "Bearer "+token.replaceAll('"',''),
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({media_id : media_id})
     };
 
     const postResult = await fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/'+media_id,
+      'https://media2.edu.metropolia.fi/media-api/api/v1/likes/', //+media_id,
       options
     );
     return postResult;
@@ -202,24 +208,19 @@ const useLike = ()=> {
     };
 
     const postResult = await fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/'+media_id,
+      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/" + media_id,
       options
     );
     return postResult;
   }
 
 /**
- * Palauttaa:
- * [
- *   {
- *     "like_id": 1,
+ * @param media_id
+ * @returns {Promise<*>} [{ "like_id": 1,
  *     "media_id": 1,
  *     "user_id": 1,
  *     "created_at": "2024-01-26T09:38:08.000Z"
- *   }
- * ]
- * @param media_id
- * @returns {Promise<*>}
+ *   }]
  */
 const getLikesByMedia = async (media_id) => {
     const options = {
@@ -230,7 +231,7 @@ const getLikesByMedia = async (media_id) => {
     };
 
     const likeArray = await fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/bymedia/'+media_id,
+      'https://media2.edu.metropolia.fi/media-api/api/v1/likes/bymedia/'+media_id,
       options
     );
     return likeArray;
@@ -259,7 +260,7 @@ const getLikesByMedia = async (media_id) => {
     };
 
     const likeArray = await fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/likes/byuser/',
+      'https://media2.edu.metropolia.fi/media-api/api/v1/likes/byuser/',
       options
     );
     return likeArray
