@@ -24,19 +24,27 @@ const Upload = ()=>{
     }
   };
 
+  const {postFile, postMedia} = useFile();
+
   //callback for handleSubmit
   const doUpload = async (inputs) => {
     console.log('doUpload'+inputs +file  );
     try {
-      const {postFile, postMedia} = useFile();
-
       //call postFile function (see below)  APIhooks
       const postFileResponse = await postFile(file,token);
       console.log(postFileResponse);
 
       //call postMedia function (see below)
-      const postMediaResponse = await postMedia(file, inputs, token, postFileResponse);
+      const postMediaResponse = await postMedia(file, inputs, token, postFileResponse.data);
       console.log(postMediaResponse);
+
+      if(postFileResponse.message === "file uploaded" && postMediaResponse.message === "Media updated"){
+        console.log('upload success', postFileResponse.message, postMediaResponse.message);
+        alert('Upload success.');
+      } else {
+        console.log('upload failed', postFileResponse.message, postMediaResponse.message);
+        alert('Upload failed: '+postFileResponse.message+' '+postMediaResponse.message);
+      }
 
       //redirect to Home
       navigate("/");

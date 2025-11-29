@@ -1,25 +1,29 @@
 import React from "react";
 import useForm from '../hooks/formHooks.js';
+import {useNavigate} from "react-router";
 
 
 const EditDialog = ({item, modifyMedia, setEditItem}) => {
 
   function VideoOrImage (selectedItem) {
-    if (selectedItem.media_type === 'video/mp4') {
-      return ( <figure>
-        <video autoPlay src={selectedItem.filename}/>
-        <figcaption> Video </figcaption>
-      </figure>)
-
-    } else if (selectedItem.media_type === 'image/jpeg') {
-      return ( <figure>
-        <img src={selectedItem.thumbnail} alt={selectedItem.title} />
-        <figcaption> Image </figcaption>
-      </figure> )
+    if (selectedItem.media_type === "video/mp4") {
+      return (
+        <figure>
+          <video autoPlay src={selectedItem.filename} />
+          <figcaption> Video </figcaption>
+        </figure>
+      );
+    } else if (selectedItem.media_type === "image/jpeg") {
+      return (
+        <figure>
+          <img src={selectedItem.thumbnail} alt={selectedItem.title} />
+          <figcaption> Image </figcaption>
+        </figure>
+      );
     }
   }
 
-
+  const navigate = useNavigate();
   const initValues = {title: '', description: ''};
 
   //TODO: form jossa editoida mediaa
@@ -27,6 +31,8 @@ const EditDialog = ({item, modifyMedia, setEditItem}) => {
     console.log("handleEditForm: " + inputs);
     const modifyResult = modifyMedia(item.media_id, title, description, localStorage.getItem('token'));
     modifyResult ? alert(modifyResult.message) : alert('Error updating media.');
+
+    navigate('/');
   };
 
   const {inputs, handleInputChange, handleSubmit} = useForm(handleEditForm, initValues);

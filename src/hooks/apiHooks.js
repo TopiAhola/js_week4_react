@@ -7,6 +7,10 @@ const useMedia = () => {
   //media state
   const [mediaArray, setMediaArray] = useState([]);
 
+
+
+
+
   const deleteMedia = async (media_id, token) => {
     const deleteOptions = {
       method: "DELETE",
@@ -140,7 +144,7 @@ const useFile = () => {
     console.log(responseBody.message);
 
     // return the file data.
-    return responseBody.data;
+    return responseBody;
   };
 
   const postMedia = async (file, inputs, token, postFileResponse) => {
