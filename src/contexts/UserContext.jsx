@@ -20,8 +20,10 @@ const UserProvider = ({ children }) => {
       //post login credentials to API
       const userInfo = await postLogin(credentials);
 
+      console.log('token:' +userInfo.token);
+
       //set token to local storage
-      localStorage.setItem("token", JSON.stringify(userInfo.token));
+      localStorage.setItem("token", userInfo.token);
 
       //set user to state
       setUser( userInfo.user);
