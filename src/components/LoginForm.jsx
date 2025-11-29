@@ -21,14 +21,8 @@ const LoginForm = () => {
   //callback funktio useFormille
   const doLogin = async (inputData) => {
     console.log(inputData);
-    const loginResult = await handleLogin(inputData);  //tarvitaanko paluuarvoa jos state saadaan contextin kautta?
+    await handleLogin(inputData);  //tarvitaanko paluuarvoa jos state saadaan contextin kautta?
 
-  /*  console.log(loginResult);
-    const token = loginResult.token;
-    localStorage.setItem("token", token);*/
-
-    //navigate('/profile');
-    //älä kirjaa käyttäjätietoja tuotannossa!
   }
 
   const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, initValues);

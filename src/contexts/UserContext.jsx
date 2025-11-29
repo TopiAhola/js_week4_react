@@ -29,6 +29,8 @@ const UserProvider = ({ children }) => {
       //navigate to home
       navigate("/");
 
+
+
     } catch (e) {
       console.log(e.message);
     }

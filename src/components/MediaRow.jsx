@@ -31,7 +31,16 @@ const MediaRow = (props) => {
 
   };
 
- const canEdit = ()=>{return (user !== null) && (user.id === item.user_id) }
+ const canEdit = (user, item)=>{
+   if (user.user_id === item.user_id) {
+     console.log(user.id+" canEdit " +item.id );
+     return true;
+   } else {
+     //console.log("canEdit: false");
+     return false
+   }
+
+ }
  /*const [showDialog, setShowDialog] = useState(false)*/
 
   return (
@@ -49,18 +58,16 @@ const MediaRow = (props) => {
           <Link to="/single" state={item}>
             show
           </Link>
+
+          {canEdit(user, item) && (
+            <>
+              <button onClick={handleModify}>Modify</button>
+              <button onClick={handleDelete}>Delete</button>
+            </>)}
+
         </td>
 
-        {canEdit && (
-          <>
-            <td>
-              <button onClick={handleModify}>Modify</button>
-            </td>
-            <td>
-              <button onClick={handleDelete}>Delete</button>
-            </td>
-          </>
-        )}
+
       </tr>
   );
 };
