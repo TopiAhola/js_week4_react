@@ -228,7 +228,6 @@ const useLike = () => {
       );
 
       return deleteResult.ok;
-
     } catch (error) {
       console.log(error);
       return false;
@@ -271,18 +270,24 @@ const useLike = () => {
    *   } ]
    */
   const getLikesByUser = async (token) => {
-    const options = {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token.replaceAll('"', ""),
-      },
-    };
+    try {
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token.replaceAll('"', ""),
+        },
+      };
 
-    const likeArray = await fetchData(
-      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/byuser/",
-      options
-    );
-    return likeArray;
+      const likeArray = await fetchData(
+        "https://media2.edu.metropolia.fi/media-api/api/v1/likes/byuser/",
+        options
+      );
+      return likeArray;
+
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
   };
 
   return { postLike, deleteLike, getLikesByMedia, getLikesByUser };

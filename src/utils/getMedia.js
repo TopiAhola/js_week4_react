@@ -38,6 +38,17 @@ const getMedia = async () => {
         "created_at": "2024-01-26T09:38:08.000Z",
         "thumbnail": "//localhost:3002/uploads/example-thumb.png"
       },
+      {
+        "media_id": 74,
+        "user_id": 635,
+        "filename": "//localhost:3002/uploads/example.png",
+        "filesize": 1256723,
+        "media_type": "image/png",
+        "title": "Example Title",
+        "description": "Example Description",
+        "created_at": "2024-01-26T09:38:08.000Z",
+        "thumbnail": "//localhost:3002/uploads/example-thumb.png"
+      }
 
     ];
   }
