@@ -2,43 +2,35 @@ import { useEffect, useState } from "react";
 import getMedia from "../utils/getMedia.js";
 import { fetchData } from "../utils/fetchData.js";
 
-
 const useMedia = () => {
   //media state
   const [mediaArray, setMediaArray] = useState([]);
 
-
-
-
-
   const deleteMedia = async (media_id, token) => {
     try {
-    const deleteOptions = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token.replaceAll('"', ""),
-      },
-    };
-    const deleteResult = await fetchData(
-      import.meta.env.VITE_MEDIA_API + "/media/" + media_id,
-      deleteOptions
-    );
+      const deleteOptions = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token.replaceAll('"', ""),
+        },
+      };
+      const deleteResult = await fetchData(
+        import.meta.env.VITE_MEDIA_API + "/media/" + media_id,
+        deleteOptions
+      );
 
-    if (deleteResult){
-      console.log(deleteResult);
-      if(deleteResult.message ===  "Media item deleted"){
-        return true;
-
+      if (deleteResult) {
+        console.log(deleteResult);
+        if (deleteResult.message === "Media item deleted") {
+          return true;
+        } else {
+          return false;
+        }
       } else {
         return false;
       }
-
-    } else {
-      return false;
-    }
-
-  } catch (error) {
+    } catch (error) {
       console.log(error);
       return false;
     }
@@ -74,25 +66,25 @@ const useMedia = () => {
   };
 
   return { mediaArray, setMediaArray, deleteMedia, modifyMedia };
-}
-
-
+};
 
 const useAuthentication = () => {
   const postLogin = async (inputs) => {
     const fetchOptions = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(inputs),
     };
-    const loginResult = await fetchData("https://media2.edu.metropolia.fi/auth-api/api/v1/auth/login", fetchOptions);  //import.meta.env.VITE_AUTH_API + '/auth/login'
+    const loginResult = await fetchData(
+      "https://media2.edu.metropolia.fi/auth-api/api/v1/auth/login",
+      fetchOptions
+    ); //import.meta.env.VITE_AUTH_API + '/auth/login'
     return loginResult;
   };
 
-  return {postLogin};
-
+  return { postLogin };
 };
 
 const useUser = () => {
@@ -101,7 +93,7 @@ const useUser = () => {
     const options = {
       method: "GET",
       headers: {
-        Authorization: "Bearer "+token.replaceAll('"','') //tokenissa on lainausmerkit...
+        Authorization: "Bearer " + token.replaceAll('"', ""), //tokenissa on lainausmerkit...
       },
     };
 
@@ -123,7 +115,7 @@ const useUser = () => {
     };
 
     const postResult = await fetchData(
-      'https://media2.edu.metropolia.fi/auth-api/api/v1/users/',
+      "https://media2.edu.metropolia.fi/auth-api/api/v1/users/",
       options
     );
     return postResult;
@@ -132,7 +124,6 @@ const useUser = () => {
 };
 
 const useFile = () => {
-
   const postFile = async (file, token) => {
     //create FormData object
     const formData = new FormData();
@@ -147,7 +138,7 @@ const useFile = () => {
       method: "POST",
       headers: {
         /*ContentType: "multipart/form-data",*/
-        Authorization: "Bearer "+token.replaceAll('"','')
+        Authorization: "Bearer " + token.replaceAll('"', ""),
       },
       body: formData,
     };
@@ -155,7 +146,7 @@ const useFile = () => {
     console.log("postFile:" + uploadApi + " " + options);
     console.log(options);
     const uploadResponse = await fetch(uploadApi, options);
-    const responseBody = await uploadResponse.json()
+    const responseBody = await uploadResponse.json();
     console.log(responseBody);
     console.log(responseBody.message);
 
@@ -189,13 +180,11 @@ const useFile = () => {
   return { postFile, postMedia };
 };
 
-
 /**
  *
  * @return {{postLike: (function(*, *): Promise<any>), deleteLike: (function(*, *): Promise<any>), getLikesByMedia: (function(*): Promise<any>), getLikesByUser: (function(*): Promise<any>)}}
  */
-const useLike = ()=> {
-
+const useLike = () => {
   /**
    *
    * @param media_id
@@ -206,10 +195,10 @@ const useLike = ()=> {
     const options = {
       method: "POST",
       headers: {
-        Authorization: "Bearer "+token.replaceAll('"',''),
+        Authorization: "Bearer " + token.replaceAll('"', ""),
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({media_id : media_id})
+      body: JSON.stringify({ media_id: media_id }),
     };
 
     const postResult = await fetchData(
@@ -217,7 +206,7 @@ const useLike = ()=> {
       options
     );
     return postResult;
-  }
+  };
 
   /**
    *
@@ -226,69 +215,78 @@ const useLike = ()=> {
    * @return {Promise<any>} {"message": "Like deleted"}
    */
   const deleteLike = async (like_id, token) => {
-    const options = {
-      method: "DELETE",
-      headers: {
-        Authorization: "Bearer "+token.replaceAll('"','')
-      }
-    };
+    try {
+      const options = {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token.replaceAll('"', ""),
+        },
+      };
 
-    const postResult = await fetchData(
-      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/"+like_id,
-      options
-    );
+      const deleteResult = await fetchData(
+        "https://media2.edu.metropolia.fi/media-api/api/v1/likes/" + like_id,
+        options
+      );
 
-    return postResult;
-  }
+      return deleteResult.ok;
 
-/**
- * @param media_id
- * @returns {Promise<*>} [{ "like_id": 1,
- *     "media_id": 1,
- *     "user_id": 1,
- *     "created_at": "2024-01-26T09:38:08.000Z"
- *   }]
- */
-const getLikesByMedia = async (media_id) => {
-    const options = {
-      method: "GET",
-      headers: {},
-    };
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
 
-    const likeArray = await fetchData(
-      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/bymedia/" +
-        media_id,
-      options
-    );
-    return likeArray;
-  }
+  /**
+   * @param media_id
+   * @returns {Promise<*>} [{ "like_id": 1,
+   *     "media_id": 1,
+   *     "user_id": 1,
+   *     "created_at": "2024-01-26T09:38:08.000Z"
+   *   }]
+   */
+  const getLikesByMedia = async (media_id) => {
+    try {
+      const options = {
+        method: "GET",
+        headers: {},
+      };
 
+      const likeArray = await fetchData(
+        "https://media2.edu.metropolia.fi/media-api/api/v1/likes/bymedia/" +
+          media_id,
+        options
+      );
+      return likeArray;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  };
 
-/**
- * @param token
- * @returns {Promise<*>} [ { "like_id": 1,
- *     "media_id": 1,
- *     "user_id": 1,
- *     "created_at": "2024-01-26T09:38:08.000Z"
- *   } ]
- */
+  /**
+   * @param token
+   * @returns {Promise<*>} [ { "like_id": 1,
+   *     "media_id": 1,
+   *     "user_id": 1,
+   *     "created_at": "2024-01-26T09:38:08.000Z"
+   *   } ]
+   */
   const getLikesByUser = async (token) => {
     const options = {
       method: "GET",
       headers: {
-        Authorization: "Bearer "+token.replaceAll('"','')
-      }
+        Authorization: "Bearer " + token.replaceAll('"', ""),
+      },
     };
 
     const likeArray = await fetchData(
-      'https://media2.edu.metropolia.fi/media-api/api/v1/likes/byuser/',
+      "https://media2.edu.metropolia.fi/media-api/api/v1/likes/byuser/",
       options
     );
-    return likeArray
-  }
+    return likeArray;
+  };
 
-  return {postLike, deleteLike, getLikesByMedia, getLikesByUser};
-}
+  return { postLike, deleteLike, getLikesByMedia, getLikesByUser };
+};
 
-
-export {useMedia, useAuthentication, useUser, useFile, useLike};
+export { useMedia, useAuthentication, useUser, useFile, useLike };
