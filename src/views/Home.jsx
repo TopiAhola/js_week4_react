@@ -5,7 +5,7 @@ import EditDialog from "../components/EditDialog.jsx";
 
 import {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route, Link} from 'react-router';
-import getMedia from "../utils/getMedia.js";
+import {getMedia, getMediaLocalTest} from "../utils/getMedia.js";
 
 
 
@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect( () => {
     try {
-      getMedia().then(
+      getMediaLocalTest().then(
         (array) => {
           if (array.length !== mediaArray.length) {
             setMediaArray(array);

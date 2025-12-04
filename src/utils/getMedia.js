@@ -25,10 +25,53 @@ const getMedia = async () => {
       })
     );
     return newArray;
+
   } catch (error) {
     console.log(error);
-    return [];
+    return [
+      {
+        "media_id": 73,
+        "user_id": 7,
+        "filename": "//localhost:3002/uploads/example.png",
+        "filesize": 1256723,
+        "media_type": "image/png",
+        "title": "Example Title",
+        "description": "Example Description",
+        "created_at": "2024-01-26T09:38:08.000Z",
+        "thumbnail": "//localhost:3002/uploads/example-thumb.png"
+      },
+
+    ];
   }
 };
 
-export default getMedia;
+const getMediaLocalTest = async ()=>{
+  return [
+    {
+      media_id: 73,
+      user_id: 7,
+      filename: "//localhost:3002/uploads/example.png",
+      filesize: 1256723,
+      media_type: "image/png",
+      title: "Example Title",
+      description: "Example Description",
+      created_at: "2024-01-26T09:38:08.000Z",
+      thumbnail: "//localhost:3002/uploads/example-thumb.png",
+    },
+    {
+      "media_id": 73,
+      "user_id": 635,
+      "filename": "//localhost:3002/uploads/example.png",
+      "filesize": 1256723,
+      "media_type": "image/png",
+      "title": "Example Title",
+      "description": "Example Description",
+      "created_at": "2024-01-26T09:38:08.000Z",
+      "thumbnail": "//localhost:3002/uploads/example-thumb.png"
+    }
+  ];
+
+}
+
+
+export {getMedia, getMediaLocalTest};

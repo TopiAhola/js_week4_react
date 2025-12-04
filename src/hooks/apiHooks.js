@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import getMedia from "../utils/getMedia.js";
 import { fetchData } from "../utils/fetchData.js";
 
 const useMedia = () => {
