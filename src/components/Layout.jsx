@@ -16,8 +16,10 @@ const Layout = () => {
 
 
   return (
-    <div className="[&_button]:bg-gray-800 [&_button]:border [&_button]:m-1 [&_button]:rounded-md [&_button]:px-2 [&_button]:py-2">
-      <nav className="[&>*]:bg-blue-400 w-auto [&_li]:m-0 [&_li]:p-4" >
+    <div className="[&_button]:bg-gray-800 [&_button]:border [&_button]:m-1 [&_button]:rounded-md [&_button]:px-2 [&_button]:py-2
+    [&_button]:hover:bg-white [&_button]:hover:text-black [&_button]:hover:border-black
+    ">
+      <nav className="[&>*]:bg-blue-400 w-auto min-w-fit [&_li]:m-0 [&_li]:p-4" >
         <ul className="flex bg-red-500  [&_*]:hover:bg-blue-800 " >
           <li>
             <Link to="/" >Home</Link>

@@ -1,10 +1,8 @@
 import MediaRow from "../components/MediaRow.jsx";
-import SingleView from "../components/SingleView.jsx";
 import { useMedia } from "../hooks/apiHooks.js";
 import EditDialog from "../components/EditDialog.jsx";
 
 import {useEffect, useState} from "react";
-import {BrowserRouter, Routes, Route, Link} from 'react-router';
 import {getMedia, getMediaLocalTest} from "../utils/getMedia.js";
 
 
@@ -18,7 +16,7 @@ const Home = () => {
 
   useEffect( () => {
     try {
-      getMediaLocalTest().then(
+      getMedia().then(
         (array) => {
           if (array.length !== mediaArray.length) {
             setMediaArray(array);
@@ -42,11 +40,11 @@ const Home = () => {
       <h2 className="relative top-0 w-fit h-auto py-4 justify-left flex bg-gradient-to-r from-blue-400 via-white-500 to-red-500 bg-clip-text text-6xl font-extrabold text-transparent text-center select-auto">
         My Media
       </h2>
-      {/*<SingleView key='dialog' selectedItem={selectedItem} setSelectedItem={setSelectedItem} />*/}
+
       <EditDialog key='editDialog' item={editItem} modifyMedia={modifyMedia} setEditItem={setEditItem}
       ></EditDialog>
 
-      <table className="table-auto bg-black
+      <table className="table-auto bg-black w-full
       [&_td]:border [&_td]:border-grey-400 [&_td]:px-4 [&_td]:py-1
       [&_button]:bg-gray-800 [&_button]:border [&_button]:m-1 [&_button]:rounded-md [&_button]:px-2 [&_button]:py-2
       ">
