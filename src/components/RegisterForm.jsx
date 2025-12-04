@@ -38,7 +38,9 @@ const RegisterForm = ({ showLogin, setShowLogin }) => {
       </h2>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-blue-400 py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-blue-400 py-8 px-4 shadow sm:rounded-lg sm:px-10
+        [&_*]:p-1 [&_*]:m-1 [&_input]:bg-white
+        ">
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="register_user">Username</label>
