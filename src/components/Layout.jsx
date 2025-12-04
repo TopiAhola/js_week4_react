@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const Layout = () => {
 
-  const  {handleLogin, handleAutoLogin } = useUserContext();
+  const  {handleAutoLogin } = useUserContext();
   const { user } = useUserContext();
 
   useEffect(
