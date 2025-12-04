@@ -23,8 +23,10 @@ const Profile = () => {
           <div className="w-full my-auto py-6 flex flex-col justify-center gap-2">
             <div className="w-full flex sm:flex-row flex-col gap-2 justify-center">
               <div className="w-full">
-                <dl className="[&_dt]:text-blue-400 divide-y divide-gray-300 [&_dd]:text-white">
-                  <div className="flex flex-col pb-3">
+                <dl className="[&_dt]:text-blue-400 divide-y divide-gray-300 [&_dd]:text-white
+                [&>div]:flex-col [&>div]:p-3
+                ">
+                  <div>
                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                       Username
                     </dt>

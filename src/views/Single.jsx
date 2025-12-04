@@ -26,20 +26,53 @@ const Single = (props)=>{
 
     return (
         selectedItem && (
-            <div className="">
+            <div>
                 <div>
+                  <h2 className="text-6xl font-extrabold relative top-0 w-fit h-auto py-4 justify-left flex">
+                    Single Media
+                  </h2>
+
+                  <div className="bg-gray-800 h-2" >
                     {VideoOrImage(selectedItem)}
-                    <h3>{selectedItem.title}</h3>
-                  <dl className="[&_dt]:text-blue-400 divide-y divide-gray-300 [&_dd]:text-white">
-                    <p>{selectedItem.username}</p>
-                    <p>{selectedItem.description}</p>
-                    <p>{new Date(selectedItem.created_at).toLocaleString("fi-FI")}</p>
-                    <p>{selectedItem.filesize}</p>
-                    <p>{selectedItem.media_type}</p>
+                  </div>
+
+                  <dl className="[&_dt]:text-blue-400 divide-y divide-gray-300 [&_dd]:text-white
+                  [&>div]:flex-col [&>div]:p-3
+                  ">
+                    <div>
+                      <dt>Title</dt>
+                      <dd>{selectedItem.title}</dd>
+                    </div>
+
+                    <div>
+                      <dt>User</dt>
+                      <dd>{selectedItem.username}</dd>
+                    </div>
+
+                    <div>
+                      <dt>Description</dt>
+                      <dd>{selectedItem.description}</dd>
+                    </div>
+
+                    <div>
+                      <dt>Created At</dt>
+                      <dd>{new Date(selectedItem.created_at).toLocaleString("fi-FI")}</dd>
+                    </div>
+
+                    <div>
+                      <dt>Filesize</dt>
+                      <dd>{selectedItem.filesize}</dd>
+                    </div>
+
+                    <div>
+                      <dt>Media Type</dt>
+                      <dd>{selectedItem.media_type}</dd>
+                    </div>
                   </dl>
 
                     <Likes item={selectedItem}></Likes>
                     <button onClick={() => navigate(-1)}>Go back</button>
+
                 </div>
             </div>
         )
