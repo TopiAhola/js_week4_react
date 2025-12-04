@@ -29,12 +29,15 @@ const Single = (props)=>{
             <div>
                 <div>
                     {VideoOrImage(selectedItem)}
-                    <p>{selectedItem.title}</p>
+                    <h3>{selectedItem.title}</h3>
+                  <dl className="[&_dt]:text-blue-400 divide-y divide-gray-300 [&_dd]:text-white">
                     <p>{selectedItem.username}</p>
                     <p>{selectedItem.description}</p>
                     <p>{new Date(selectedItem.created_at).toLocaleString("fi-FI")}</p>
                     <p>{selectedItem.filesize}</p>
                     <p>{selectedItem.media_type}</p>
+                  </dl>
+
                     <Likes item={selectedItem}></Likes>
                     <button onClick={() => navigate(-1)}>Go back</button>
                 </div>

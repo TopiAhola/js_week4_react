@@ -45,7 +45,7 @@ const Layout = () => {
         </ul>
       </nav>
 
-      <main>
+      <main className="bg-black ">
         <Outlet />
       </main>
 

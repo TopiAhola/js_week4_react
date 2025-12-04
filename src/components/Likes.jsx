@@ -88,7 +88,7 @@ const Likes = ({ item }) => {
   }
 
   //no return for null user
-  return !user & (
+  return user && (
     <div>
       <button onClick={toggleLike} className={userLikesThis ? "bg-red-500" : "bg-green-500"}>
         <div>Likes: {likes}</div>

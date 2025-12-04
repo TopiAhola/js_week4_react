@@ -63,6 +63,7 @@ const MediaRow = (props) => {
 
   return !deleted && (
       <tr className="">
+
         <td>
           <img src={item.thumbnail} alt={item.title} />
         </td>
@@ -72,21 +73,28 @@ const MediaRow = (props) => {
         <td>{new Date(item.created_at).toLocaleString("fi-FI")}</td>
         <td>{item.filesize}</td>
         <td>{item.media_type}</td>
-        <td>
-          <Link to="/single" state={item}>
-            show
-          </Link>
 
+
+        <td>
+          <Link to="/single" state={item}> <button>Show</button> </Link>
           {canEdit(user, item) && (
             <>
-              <button onClick={handleModify}>Modify</button>
-              <button onClick={handleDelete}>Delete</button>
+              <div>
+                <button onClick={handleModify}>Modify</button>
+              </div>
+              <div>
+                <button onClick={handleDelete} className="bg-red-500!">
+                  Delete
+                </button>
+              </div>
             </>)}
 
         </td>
 
 
       </tr>
+
+
   );
 };
 

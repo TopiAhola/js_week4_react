@@ -46,9 +46,13 @@ const Home = () => {
       <EditDialog key='editDialog' item={editItem} modifyMedia={modifyMedia} setEditItem={setEditItem}
       ></EditDialog>
 
-      <table className="">
-        <thead>
-          <tr>
+      <table className="table-auto bg-black
+      [&_td]:border [&_td]:border-grey-400 [&_td]:px-4 [&_td]:py-1
+      [&_button]:bg-gray-800 [&_button]:border [&_button]:m-1 [&_button]:rounded-md [&_button]:px-2 [&_button]:py-2
+      ">
+
+        <thead className="bg-blue-400">
+          <tr className="">
             <th>Thumbnail</th>
             <th>Title</th>
             <th>User</th>
