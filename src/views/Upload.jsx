@@ -38,9 +38,10 @@ const Upload = ()=>{
       const postMediaResponse = await postMedia(file, inputs, token, postFileResponse.data);
       console.log(postMediaResponse);
 
-      if(postFileResponse.message === "file uploaded" && postMediaResponse.message === "Media updated"){
+      if(postFileResponse.message === "file uploaded" && postMediaResponse.message === "Media created"){
         console.log('upload success', postFileResponse.message, postMediaResponse.message);
         alert('Upload success.');
+
       } else {
         console.log('upload failed', postFileResponse.message, postMediaResponse.message);
         alert('Upload failed: '+postFileResponse.message+' '+postMediaResponse.message);

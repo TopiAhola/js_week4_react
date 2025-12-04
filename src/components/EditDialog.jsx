@@ -26,10 +26,10 @@ const EditDialog = ({item, modifyMedia, setEditItem}) => {
   const navigate = useNavigate();
   const initValues = {title: '', description: ''};
 
-  //TODO: form jossa editoida mediaa
-  const handleEditForm = ({title, description }) => {
+  //form jossa editoida mediaa
+  const handleEditForm = async ({title, description }) => {
     console.log("handleEditForm: " + inputs);
-    const modifyResult = modifyMedia(item.media_id, title, description, localStorage.getItem('token'));
+    const modifyResult = await modifyMedia(item.media_id, title, description, localStorage.getItem('token'));
     modifyResult ? alert(modifyResult.message) : alert('Error updating media.');
 
     navigate('/');

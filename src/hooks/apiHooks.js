@@ -12,6 +12,7 @@ const useMedia = () => {
 
 
   const deleteMedia = async (media_id, token) => {
+    try {
     const deleteOptions = {
       method: "DELETE",
       headers: {
@@ -24,8 +25,23 @@ const useMedia = () => {
       deleteOptions
     );
 
-    console.log(deleteResult);
-    return deleteResult;
+    if (deleteResult){
+      console.log(deleteResult);
+      if(deleteResult.message ===  "Media item deleted"){
+        return true;
+
+      } else {
+        return false;
+      }
+
+    } else {
+      return false;
+    }
+
+  } catch (error) {
+      console.log(error);
+      return false;
+    }
   };
 
   /**

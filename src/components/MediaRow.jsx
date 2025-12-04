@@ -17,34 +17,52 @@ const MediaRow = (props) => {
   const { user } = useUserContext();
   const {deleteMedia, modifyMedia} = useMedia();
 
+  let [deleted, setDeleted] = useState(false) ;
 
-  const handleModify = ()=>{
+  const handleModify = async ()=>{
     console.log('handleModify');
     setEditItem(item);
   };
 
-  const handleDelete = ()=>{
+  const handleDelete = async ()=>{
     console.log('handleDelete');
     if(confirm("Are you sure you want to delete?")){
-      deleteMedia(item.media_id);
+      const deleteResult = await deleteMedia(item.media_id, localStorage.getItem('token'));
+      if(deleteResult) {
+        //
+        alert('Media deleted.');
+        setDeleted(true);
+      } else {
+        alert('Error deleting media.');
+      }
+
     }
 
   };
 
- const canEdit = (user, item)=>{
-   if (user.user_id === item.user_id) {
-     console.log(user.id+" canEdit " +item.id );
-     return true;
-   } else {
-     //console.log("canEdit: false");
-     return false
+ const canEdit = (user, item) => {
+   try{
+     if (user) {
+       if (user.user_id === item.user_id || user.level_name === 'Admin') {
+         console.log(user.id + " canEdit " + item.id);
+         return true;
+       } else {
+         //console.log("canEdit: false");
+         return false;
+       }
+     } else {
+       //console.log('user is null at canEdit in MediaRow');
+       return false;
+     }
+   } catch (error) {
+     console.log(error);
+     return false;
    }
-
- }
+ };
  /*const [showDialog, setShowDialog] = useState(false)*/
 
-  return (
-      <tr>
+  return !deleted && (
+      <tr className="">
         <td>
           <img src={item.thumbnail} alt={item.title} />
         </td>
