@@ -1,5 +1,4 @@
-import Home from "../views/Home.jsx";
-import SingleView from "./SingleView";
+
 import {Link} from "react-router";
 import { useUserContext } from "../hooks/contextHooks.js";
 import { useMedia } from "../hooks/apiHooks.js";

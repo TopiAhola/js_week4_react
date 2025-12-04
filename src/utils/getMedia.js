@@ -3,8 +3,6 @@
 import {fetchData} from "./fetchData.js";
 
 
-import SingleView from "../components/SingleView.jsx";
-
 const getMedia = async () => {
   try {
     console.log("getMedia");

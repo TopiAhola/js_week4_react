@@ -16,8 +16,8 @@ const Layout = () => {
 
 
   return (
-    <div>
-      <nav className="[&>*]:bg-blue-400 w-auto" >
+    <div className="[&_button]:bg-gray-800 [&_button]:border [&_button]:m-1 [&_button]:rounded-md [&_button]:px-2 [&_button]:py-2">
+      <nav className="[&>*]:bg-blue-400 w-auto [&_li]:m-0 [&_li]:p-4" >
         <ul className="flex bg-red-500  [&_*]:hover:bg-blue-800 " >
           <li>
             <Link to="/" >Home</Link>

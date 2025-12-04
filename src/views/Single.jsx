@@ -26,7 +26,7 @@ const Single = (props)=>{
 
     return (
         selectedItem && (
-            <div>
+            <div className="">
                 <div>
                     {VideoOrImage(selectedItem)}
                     <h3>{selectedItem.title}</h3>
