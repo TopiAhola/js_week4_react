@@ -39,7 +39,9 @@ const Home = () => {
 
   return (
     <>
-      <h2>My Media</h2>
+      <h2 className="relative top-0 w-fit h-auto py-4 justify-left flex bg-gradient-to-r from-blue-400 via-white-500 to-red-500 bg-clip-text text-6xl font-extrabold text-transparent text-center select-auto">
+        My Media
+      </h2>
       <SingleView key='dialog' selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
       <EditDialog key='editDialog' item={editItem} modifyMedia={modifyMedia} setEditItem={setEditItem}
       ></EditDialog>

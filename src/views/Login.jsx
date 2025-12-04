@@ -4,12 +4,13 @@ import RegisterForm from '../components/RegisterForm.jsx'
 
 const Login = () => {
 
-  const [showLogin, setshowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <div>
-      {showLogin ? <LoginForm/> : <RegisterForm/> }
-      <button onClick={() => setshowLogin(!showLogin)}> {showLogin ? 'Not a user? Register' : 'Already a user? Login'} </button>
+    <div className="flex flex-col justify-center">
+      {showLogin ? <LoginForm showLogin={showLogin} setShowLogin={setShowLogin}/>
+        : <RegisterForm showLogin={showLogin} setShowLogin={setShowLogin}/> }
+
     </div>
   );
 };

@@ -59,7 +59,9 @@ const Upload = ()=>{
 
   return (
     <>
-      <h1>Upload</h1>
+      <h2 className="relative top-0 w-fit h-auto py-4 justify-left flex bg-gradient-to-r from-blue-400 via-white-500 to-red-500 bg-clip-text text-6xl font-extrabold text-transparent text-center select-auto">
+        Upload
+      </h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>

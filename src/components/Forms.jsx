@@ -46,7 +46,9 @@ const Forms = () => {
 
   return (
     <>
-      <h2>Forms</h2>
+      <h2 className="relative top-0 w-fit h-auto py-4 justify-left flex bg-gradient-to-r from-blue-400 via-white-500 to-red-500 bg-clip-text text-6xl font-extrabold text-transparent text-center select-auto">
+        Forms
+      </h2>
       <form onSubmit={handleSubmit} style={{width:'400px', margin:"auto"}}>
         <label htmlFor={'nimi'} style={{width:'100%', margin:'auto', textAlign:'center'}}> Nimi tähän: </label>
         <input type="text" id="nimi" name={'nameInput'} value={inputs.nameInput} onChange={handleChange} style={{width:'100%', margin:'auto', padding:'0', minHeight:'30px' }} />
