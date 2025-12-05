@@ -39,7 +39,8 @@ const EditDialog = ({item, modifyMedia, setEditItem}) => {
 
   return (
     item && (
-      <dialog open className="border-red-400 bg-black border-4 m-4 p-4 w-auto text-white
+      <dialog open className="fixed
+      border-red-400 bg-black border-4 m-4 p-4 w-auto text-white
       [&_button]:bg-gray-800 [&_button]:border [&_button]:m-1 [&_button]:rounded-md [&_button]:px-2 [&_button]:py-2
       [&_button]:hover:bg-white [&_button]:hover:text-black [&_button]:hover:border-black
       ">
@@ -49,7 +50,7 @@ const EditDialog = ({item, modifyMedia, setEditItem}) => {
             Edit Media
           </h2>
 
-          <div className="bg-gray-800 h-2" >
+          <div className="bg-gray-800 h-auto" >
             {VideoOrImage(item)}
           </div>
 
